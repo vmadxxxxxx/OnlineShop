@@ -7,7 +7,7 @@ include('structure/header.php');
         <hr>
         <h1> Online Shop</h1>
         <p>
-            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x
         </p>
         <hr>
     </div>

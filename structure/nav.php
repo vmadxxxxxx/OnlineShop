@@ -13,8 +13,8 @@
         </div>
         <div id="navabar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About us</a></li>
+                <li class="active"><a href="index.php">Home</a></li>
+                <li><a href="./registerForm.php">Register</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#LogIn">Login</a></li>
             </ul>

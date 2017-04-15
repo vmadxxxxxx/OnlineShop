@@ -11,3 +11,11 @@ body{
   text-align:center;
 }
 
+span {
+    color: red;
+}
+
+
+.label {
+    color: black;
+}

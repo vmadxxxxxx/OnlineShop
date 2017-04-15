@@ -138,3 +138,14 @@ class User extends activeRecord {
         return null;
     }
 }
+
+//sql query for creating table for users
+//
+// CREATE TABLE User (
+//         id int AUTO_INCREMENT,
+//         name text(20) NOT NULL,
+//         surname text(20) NOT NULL,
+//         email varchar(50) NOT NULL UNIQUE,
+//         passwordHash varchar(100) NOT NULL,
+//         PRIMARY KEY(id)
+//         );
