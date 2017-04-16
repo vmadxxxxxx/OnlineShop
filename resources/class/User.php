@@ -48,7 +48,7 @@ class User extends activeRecord {
     }
 
     function setPassword($passwordHash) {
-        $this->passwordHash = $passwordHash;
+        $this->passwordHash = md5($passwordHash);
     }
 
     //creating new user and updating user that already exists
@@ -134,6 +134,20 @@ class User extends activeRecord {
             $loadedUser->passwordHash = $row['passwordHash'];
             $loadedUser->email = $row['email'];
             return $loadedUser;
+        }
+        return null;
+    }
+    
+
+    static public function loadByEmail($email) {
+        self::connect();
+        $sql = "SELECT email FROM User WHERE email='$email'";
+        $result = self::$db->conn->query($sql);
+        if ($result && $result->rowCount() == 1) {
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+            $loadedEmail = new User();
+            $loadedEmail->email = $row['email'];
+            return $loadedEmail;
         }
         return null;
     }
