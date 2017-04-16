@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $user->save();
 
                 echo "Account created. You can log in now. ";
-                echo "<a href='http://localhost/Xpoint/sites/loginForm.php'>Log In</a>";
+                echo "<a href='./loginForm.php'>Log In</a>";
             } catch (Exception $e) {
                 echo "Uwaga: " . $e->getMessage() . "\n";
                 return false;
@@ -42,6 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<span>Fill all empty spaces!</span>";
     }
 }
+
+
 ?>
 
 
@@ -70,8 +72,7 @@ bo jak jest w structure to sie robia problemy z zalaczaniem bootstrapa i nie wie
     </form>
 </div>
 
-<script src='structure/js/jquery-3.2.0.min.js'></script>
-<script src="structure/js/bootstrap.min.js"></script>
+
 
 <?php
 include('structure/footer.php');

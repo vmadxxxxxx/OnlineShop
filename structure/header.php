@@ -1,6 +1,8 @@
 <?php
+session_start();
 require_once("./autoloader.php");
 include('arrays.php');
+
 ?>
 <!DOCTYPE html>
 <html>

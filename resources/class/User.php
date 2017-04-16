@@ -151,6 +151,20 @@ class User extends activeRecord {
         }
         return null;
     }
+    
+    static public function verifyPassword($password, $email) {
+        $sql = "SELECT passwordHash FROM User WHERE email = '$email'";
+        $result = self::$db->conn->query($sql);
+
+        if ($result->rowCount() == 1) {
+            $pass = md5($password);
+            $dbPass = $result->fetch();
+            if ($dbPass['passwordHash'] == $pass) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 //sql query for creating table for users
