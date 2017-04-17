@@ -6,9 +6,9 @@ include('structure/header.php');
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']) && !empty($_POST['passwd'])) {
-        
-        
-       //assigning data form sent form into variables
+
+
+        //assigning data form sent form into variables
         $name = $_POST['name'];
         $surname = $_POST['surname'];
         $email = $_POST['email'];
@@ -37,13 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 return false;
             }
         }
-        
     } else {
         echo "<span>Fill all empty spaces!</span>";
     }
 }
-
-
 ?>
 
 
@@ -53,24 +50,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-<!-- pierdolony formularz nie chce mi sie wyrownac, przenioslem go tez do glownego katalogu,
-bo jak jest w structure to sie robia problemy z zalaczaniem bootstrapa i nie wiem jak te katalogi podpiac zeby bylo dobrze -->
 
 
-<h2>Register new account</h2>
-<div class="form-inline">
-    <form action="" method="POST">
-        <label class="label">Name</label>
-        <input class="input-sm" type="text" name ="name"></input><br><br>
-        <label class="label">Surname</label>
-        <input class="input-sm" type="text" name="surname"></input><br><br>
-        <label class="label">Email</label>
-        <input class="input-sm" type="email" name="email"></input><br><br>
-        <label class="label">Password</label>
-        <input class="input-sm" type="password" name="passwd"></input><br><br>
-        <button class="btn-primary" type="submit" name="submit">Confirm</button><br><br>
-    </form>
-</div>
+<h2>Register new account</h2><br>
+
+<form action="" method="POST">
+    <div class="form-group center-block">
+        <label for="name" class="control-label">Name:</label>
+
+        <input class="form-control" id="name" type="text" name ="name"></input>
+
+        <label class="control-label" for="surname">Surname</label>
+
+        <input class="form-control" id="surname" type="text" name="surname"></input>
+
+        <label class="control-label" for="email">Email</label>
+
+        <input class="form-control" id="email" type="email" name="email"></input>
+
+        <label class="control-label" for="passwd">Password</label>
+
+        <input class="form-control" id="passwd" type="password" name="passwd"></input>
+        <br>
+
+
+        <button class="btn-primary" type="submit" name="submit">Send</button>
+
+    </div>
+</form>
+
 
 
 
