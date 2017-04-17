@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['email'] = $email;
 
                     echo "Success!<br>";
-                    header("Refresh: 2 index.php?");
+                    header("Refresh: 1 index.php?");
                     
                 } catch (Exception $e) {
                     echo "Uwaga: " . $e->getMessage() . "\n";
