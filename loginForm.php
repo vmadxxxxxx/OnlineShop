@@ -31,8 +31,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     return false;
                 }
             }
-        } else {
-            echo "nie";
+        } else if (!!Admin::loadByEmail($email)) {
+            if (Admin::verifyPassword($password, $email) ===true) {
+                try {
+
+
+                    //assigning session parameters
+                    $_SESSION['adminEmail'] = $email;
+
+                    echo "Success!<br>";
+                    header("Refresh: 1 index.php?");
+                    
+                } catch (Exception $e) {
+                    echo "Uwaga: " . $e->getMessage() . "\n";
+                    return false;
+                }
+                
+            }
+        }
+        
+        
+        else {
+            echo "E-mail doesn't exist in database!";
         }
     } else {
         echo "<span>Fill all empty spaces!</span>";

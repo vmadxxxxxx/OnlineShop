@@ -38,7 +38,7 @@ $loggedUser = "
                 <div class='collapse navbar-collapse' id='nav-rolled'>
                         <ul class='nav navbar-nav col-md-8'>
                             <li class='active'><a href='#items'>Browse Shop <span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></li>
-                            <li><a href='#messages'>Messages <span class='glyphicon glyphicon-envelope' aria-hidden='true'></span></a></li>
+                            <li><a href='./structure/pages/messages.php'>Messages <span class='glyphicon glyphicon-envelope' aria-hidden='true'></span></a></li>
                             <li><a href='#myOrders'>My orders</a></li>
                             <li><a href='#cart'>Cart <span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
                         </ul>
@@ -86,7 +86,7 @@ $adminUser = "
 
 if (isset($_SESSION['email'])) {
     echo $loggedUser;
-} else if (isset($_SESSION['admin'])) {
+} else if (isset($_SESSION['adminEmail'])) {
     echo $adminUser;
 } else {
     echo $newUser;

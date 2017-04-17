@@ -6,6 +6,7 @@
 require('./resources/class/activeRecordInterface.php');
 require('./resources/class/activeRecord.php');
 require('./resources/class/User.php');
+require('./resources/class/Admin.php');
 require('./resources/config.php');
 
 
