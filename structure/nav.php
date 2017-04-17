@@ -27,11 +27,12 @@ $loggedUser = "
         </div>
         <div id='navabar' class='navbar-right'>
             <ul class='nav navbar-nav'>
-                <li><a href='./contact.php'>Contact</a></li>
-                <li><a href='#items'>Items</a></li>
-                <li><a href='#messages'>Messages</a></li>
+                
+                <li><a href='#items'>Browse Shop <span class='glyphicon glyphicon-search'></span></a></li>
+                <li><a href='#messages'>Messages <span class='glyphicon glyphicon-envelope'></span></a></li>
                 <li><a href='#myOrders'>My orders</a></li>
                 <li><a href='#cart'>Cart</a></li>
+                <li><a href='./contact.php'> Contact </a></li>
                 <li><a href='./logOut.php'>Log out</a></li>
             </ul>
         </div>
@@ -46,12 +47,13 @@ $adminUser = "
         </div>
         <div id='navabar' class='navbar-right'>
             <ul class='nav navbar-nav'>
-                <li><a href='./contact.php'>Contact</a></li>
-                <li><a href='#items'>Items</a></li>
-                <li><a href='#messages'>Messages</a></li>
+                
+                <li><a href='#items'>Browse Shop <span class='glyphicon glyphicon-search'></span></a></li>
+                <li><a href='#messages'>Messages <span class='glyphicon glyphicon-envelope'></span></a></li>
                 <li><a href='#myOrders'>My orders</a></li>
                 <li><a href='#cart'>Cart</a></li>
                 <li><a href='#adminPanel'>Admin Panel</a></li>
+                <li><a href='./contact.php'>Contact</a></li>
                 <li><a href='#./logOut.php'>Log out</a></li>
             </ul>
         </div>
