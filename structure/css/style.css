@@ -24,3 +24,13 @@ span {
 .form-group {
     width:500px;
 }
+
+.table-header {
+    color: maroon;
+    font-size: 30px;
+}
+
+.table-col {
+    color: green;
+    font-size: 20px;
+}
