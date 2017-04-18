@@ -34,3 +34,17 @@ span {
     color: green;
     font-size: 20px;
 }
+
+.description {
+
+    width: 100px;
+
+}
+.img {
+    white-space: nowrap;
+    width: 390px;
+
+}
+#images{
+    white-space: nowrap;
+}
