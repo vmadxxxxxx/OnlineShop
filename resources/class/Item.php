@@ -9,7 +9,7 @@ class Item extends activeRecord {
     public function __construct() {
         parent::__construct();
         $this->name = '';
-        $this->sprice = '';
+        $this->price = '';
         $this->description = '';
 
     }
@@ -118,6 +118,7 @@ class Item extends activeRecord {
             $row = $result->fetch(PDO::FETCH_ASSOC);
             $loadedItem = new Item();
             $loadedItem->id = $row['id'];
+            $loadedItem->name = $row['name'];
             $loadedItem->price = $row['price'];
             $loadedItem->description = $row['description'];
             return $loadedItem;
