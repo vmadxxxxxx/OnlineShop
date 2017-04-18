@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once("./autoloader.php");
-include('arrays.php');
+require_once($_SERVER['DOCUMENT_ROOT']."/OnlineShop/autoloader.php");
 
+$path = $_SERVER['DOCUMENT_ROOT'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,14 +14,14 @@ include('arrays.php');
         <title> <?php print(TITLE); ?> </title>
    
         <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.css" rel="stylesheet"> <!-- adding file normalize.css to reset styles -->
-        <link href="./structure/css/bootstrap.css" rel="stylesheet"> <!-- include bootstrap styles -->
-        <link href="./structure/css/style.css" rel="stylesheet">  <!-- overwriting bootstrap with own styles -->
+        <link href="<?php $path?>/OnlineShop/structure/css/bootstrap.css" rel="stylesheet"> <!-- include bootstrap styles -->
+        <link href="<?php $path?>/OnlineShop/structure/css/style.css" rel="stylesheet">  <!-- overwriting bootstrap with own styles -->
     </head>
     <body>
 
        
 
-            <?php include('nav.php'); ?>
+            <?php include($_SERVER['DOCUMENT_ROOT']."/OnlineShop/structure/nav.php"); ?>
 
 
 

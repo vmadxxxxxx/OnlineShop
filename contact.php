@@ -1,6 +1,6 @@
 <?php
 define('TITLE', "LogIn");
-include('structure/header.php');
+include($_SERVER['DOCUMENT_ROOT'].'/OnlineShop/structure/header.php');
 ?>
 
 <h1>Contact us</h1>
@@ -12,5 +12,5 @@ include('structure/header.php');
 </ul>
 </div>
 <?php
-include('structure/footer.php');
+include($_SERVER['DOCUMENT_ROOT'].'/OnlineShop/structure/footer.php');
 ?>
