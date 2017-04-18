@@ -141,23 +141,6 @@ class Image extends activeRecord {
         return null;
     }
 
-    static public function loadAll() {
-        self::connect();
-        $sql = "SELECT * FROM Image WHERE itemId like $id";
-        $returnTable = [];
-        if ($result = self::$db->conn->query($sql)) {
-            foreach ($result as $row) {
-                $loadedImage = new Image();
-                $loadedImage->id = $row['id'];
-                $loadedImage->name = $row['name'];
-                $loadedImage->source = $row['source'];
-                $loadedImage->itemId = $row['itemId'];
-                $returnTable[] = $loadedImage;
-            }
-        }
-        return $returnTable;
-    }
-
 
 
   }
