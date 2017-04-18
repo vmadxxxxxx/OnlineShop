@@ -3,7 +3,7 @@
 class Item extends activeRecord {
 
     private $name;
-    private $price
+    private $price;
     private $description;
 
     public function __construct() {
@@ -125,7 +125,7 @@ class Item extends activeRecord {
         return null;
     }
 
-
+}
   // sql query for creating table for Items
 
   /*
