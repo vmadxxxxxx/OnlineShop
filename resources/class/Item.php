@@ -81,7 +81,7 @@ class Item extends activeRecord {
     }
 
     //delete function avalible only for admin users
-    public function delete() {
+    public function delete($id) {
         if ($this->id != -1) {
             if (self::$db->conn->query("DELETE FROM Item WHERE id=$this->id")) {
                 $this->id = -1;

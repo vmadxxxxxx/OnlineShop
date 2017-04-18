@@ -92,9 +92,9 @@ class User extends activeRecord {
     }
 
     //delete function avalible only for admin users
-    public function delete() {
+    public function delete($id) {
         if ($this->id != -1) {
-            if (self::$db->conn->query("DELETE FROM User WHERE id=$this->id")) {
+            if (self::$db->conn->query("DELETE FROM User WHERE id=$id")) {
                 $this->id = -1;
                 return true;
             }
