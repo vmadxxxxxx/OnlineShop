@@ -81,9 +81,9 @@ class Item extends activeRecord {
     }
 
     //delete function avalible only for admin users
-    public function delete() {
+    public function delete($id) {
         if ($this->id != -1) {
-            if (self::$db->conn->query("DELETE FROM Item WHERE id=$this->id")) {
+            if (self::$db->conn->query("DELETE FROM Item WHERE id=$id")) {
                 $this->id = -1;
                 return true;
             }
@@ -104,7 +104,7 @@ class Item extends activeRecord {
                 $loadedItem->name = $row['name'];
                 $loadedItem->price = $row['price'];
                 $loadedItem->description = $row['description'];
-                $returnTable[] = $loadedUser;
+                $returnTable[] = $loadedItem;
             }
         }
         return $returnTable;
@@ -120,12 +120,12 @@ class Item extends activeRecord {
             $loadedItem->id = $row['id'];
             $loadedItem->price = $row['price'];
             $loadedItem->description = $row['description'];
-            return $loadedUser;
+            return $loadedItem;
         }
         return null;
     }
 
-}
+  }
   // sql query for creating table for Items
 
   /*

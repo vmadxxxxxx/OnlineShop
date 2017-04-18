@@ -34,15 +34,15 @@ $loggedUser = "
                     </button>
                     <p><a class='navbar-text' href='./index.php'><strong>Online Shop</strong></a></p>
                 </div>
-                
+
                 <div class='collapse navbar-collapse' id='nav-rolled'>
                         <ul class='nav navbar-nav col-md-8'>
-                            <li class='active'><a href='#items'>Browse Shop <span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></li>
+                            <li class='active'><a href='./browseShop.php'>Browse Shop <span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></li>
                             <li><a href='./structure/pages/messages.php'>Messages <span class='glyphicon glyphicon-envelope' aria-hidden='true'></span></a></li>
                             <li><a href='#myOrders'>My orders</a></li>
                             <li><a href='#cart'>Cart <span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
                         </ul>
-                
+
                         <ul class='nav navbar-nav navbar-right'>
                             <li><a href='./contact.php'>Contact</a></li>
                             <li><a href='./logOut.php'>Log out</a></li>
@@ -66,15 +66,15 @@ $adminUser = "
                     </button>
                     <p><a class='navbar-text' href='./index.php'><strong>Online Shop</strong></a></p>
                 </div>
-                
+
                 <div class='collapse navbar-collapse' id='nav-rolled'>
                         <ul class='nav navbar-nav col-md-8'>
-                            <li class='active'><a href='#items'>Browse Shop <span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></li>
+                            <li class='active'><a href='./browseShop.php'>Browse Shop <span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></li>
                             <li><a href='#messages'>Messages <span class='glyphicon glyphicon-envelope' aria-hidden='true'></span></a></li>
                             <li><a href='#myOrders'>My orders</a></li>
                             <li><a href='#cart'>Cart <span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
                         </ul>
-                
+
                         <ul class='nav navbar-nav navbar-right'>
                             <li><a href='./adminPanel.php'>Admin Panel</a></li>
                             <li><a href='./contact.php'>Contact</a></li>
@@ -92,4 +92,3 @@ if (isset($_SESSION['email'])) {
     echo $newUser;
 }
 ?>
-
