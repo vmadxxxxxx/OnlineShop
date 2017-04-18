@@ -126,6 +126,40 @@ class Image extends activeRecord {
         return null;
     }
 
+    static public function loadByItemId($id) {
+        self::connect();
+        $sql = "SELECT * FROM Image WHERE itemId like $id";
+        $result = self::$db->conn->query($sql);
+        if ($result && $result->rowCount() == 1) {
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+            $loadedImage = new Image();
+            $loadedImage->id = $row['id'];
+            $loadedImage->source = $row['source'];
+            $loadedImage->itemId = $row['itemId'];
+            return $loadedImage;
+        }
+        return null;
+    }
+
+    static public function loadAll() {
+        self::connect();
+        $sql = "SELECT * FROM Image WHERE itemId like $id";
+        $returnTable = [];
+        if ($result = self::$db->conn->query($sql)) {
+            foreach ($result as $row) {
+                $loadedImage = new Image();
+                $loadedImage->id = $row['id'];
+                $loadedImage->name = $row['name'];
+                $loadedImage->source = $row['source'];
+                $loadedImage->itemId = $row['itemId'];
+                $returnTable[] = $loadedImage;
+            }
+        }
+        return $returnTable;
+    }
+
+
+
   }
 
   // sql query for creating table for Image
