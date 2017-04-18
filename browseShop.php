@@ -2,6 +2,16 @@
 define('TITLE', "Browse Shop;");
 include('structure/header.php');
 
+// $pictures = Image::loadAllById(3);
+
+// foreach ($pictures as $val) {
+//  $sciezka = $val->getSource();
+//  echo "$sciezka <br>";
+//
+// }
+
+// $image = Image::loadByItemId(3);
+// $path = $image->getSource();
 
 $items = Item::loadAll();
 // var_dump($items);
