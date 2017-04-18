@@ -1,16 +1,17 @@
 <?php
 
-class Item extends activeRecord {
+class Image extends activeRecord {
 
     private $name;
-    private $price;
-    private $description;
+    private $source;
+    private $itemId;
+
 
     public function __construct() {
         parent::__construct();
         $this->name = '';
-        $this->sprice = '';
-        $this->description = '';
+        $this->source = '';
+        $this->itemId = '';
 
     }
 
@@ -22,36 +23,36 @@ class Item extends activeRecord {
         return $this->name;
     }
 
-    function getPrice() {
-        return $this->price;
+    function getSource() {
+        return $this->source;
     }
 
-    function getDescription() {
-        return $this->description;
+    function getItemId() {
+        return $this->itemId;
     }
 
     function setName($name) {
         $this->name = $name;
     }
 
-    function setPrice($price) {
-        $this->price = $price;
+    function setSource($source) {
+        $this->source = $source;
     }
 
-    function setDescription($description) {
-        $this->description = $description;
+    function setItemId($itemId) {
+        $this->itemId = $itemId;
     }
 
-    //creating new Item and updateing Item that already exists
+    //creating new Image and updating Image that already exists
     public function save() {
         if (self::$db->conn != null) {
             if ($this->id == -1) {
-                $sql = "INSERT INTO Item (name, price, description) values (:name, :price, :description)";
+                $sql = "INSERT INTO Image (name, source, itemId) values (:name, :source, :itemId)";
                 $stmt = self::$db->conn->prepare($sql);  //MySQL inejction preventing during registering new user
                 $result = $stmt->execute([
                     'name' => $this->name,
-                    'price' => $this->price,
-                    'description' => $this->description
+                    'source' => $this->source,
+                    'itemId' => $this->itemId
                 ]);
 
                 if ($result == true) {
@@ -61,13 +62,13 @@ class Item extends activeRecord {
                     echo self::$db->conn->error;
                 }
             } else {
-                $sql = "UPDATE Item SET name = :name, price = :price, description = :description WHERE id = $this->id";
+                $sql = "UPDATE Image SET name = :name, source = :source, itemId = :itemId WHERE id = $this->id";
 
                 $stmt = self::$db->conn->prepare($sql);
                 $result = $stmt->execute([
                     'name' => $this->name,
-                    'price' => $this->price,
-                    'description' => $this->description
+                    'source' => $this->source,
+                    'itemId' => $this->itemId
                 ]);
 
                 if ($result == true) {
@@ -83,7 +84,7 @@ class Item extends activeRecord {
     //delete function avalible only for admin users
     public function delete($id) {
         if ($this->id != -1) {
-            if (self::$db->conn->query("DELETE FROM Item WHERE id=$id")) {
+            if (self::$db->conn->query("DELETE FROM Image WHERE id=$id")) {
                 $this->id = -1;
                 return true;
             }
@@ -95,16 +96,16 @@ class Item extends activeRecord {
 
     static public function loadAll() {
         self::connect();
-        $sql = "SELECT * FROM Item";
+        $sql = "SELECT * FROM Image";
         $returnTable = [];
         if ($result = self::$db->conn->query($sql)) {
             foreach ($result as $row) {
-                $loadedItem = new Item();
-                $loadedItem->id = $row['id'];
-                $loadedItem->name = $row['name'];
-                $loadedItem->price = $row['price'];
-                $loadedItem->description = $row['description'];
-                $returnTable[] = $loadedItem;
+                $loadedImage = new Image();
+                $loadedImage->id = $row['id'];
+                $loadedImage->name = $row['name'];
+                $loadedImage->source = $row['source'];
+                $loadedImage->itemId = $row['itemId'];
+                $returnTable[] = $loadedImage;
             }
         }
         return $returnTable;
@@ -112,28 +113,29 @@ class Item extends activeRecord {
 
     static public function loadById($id) {
         self::connect();
-        $sql = "SELECT * FROM Item WHERE id=$id";
+        $sql = "SELECT * FROM Image WHERE id=$id";
         $result = self::$db->conn->query($sql);
         if ($result && $result->rowCount() == 1) {
             $row = $result->fetch(PDO::FETCH_ASSOC);
-            $loadedItem = new Item();
-            $loadedItem->id = $row['id'];
-            $loadedItem->price = $row['price'];
-            $loadedItem->description = $row['description'];
-            return $loadedItem;
+            $loadedImage = new Image();
+            $loadedImage->id = $row['id'];
+            $loadedImage->source = $row['source'];
+            $loadedImage->itemId = $row['itemId'];
+            return $loadedImage;
         }
         return null;
     }
 
   }
-  // sql query for creating table for Items
+
+  // sql query for creating table for Image
 
   /*
-   CREATE TABLE Item (
-           id int AUTO_INCREMENT,
-           name text(20) NOT NULL,
-           price float NOT NULL,
-           description varchar(255) NOT NULL,
-           PRIMARY KEY(id)
+CREATE TABLE Image (
+           id int AUTO_INCREMENT PRIMARY KEY,
+           name text(20),
+           source varchar(250),
+           itemId int NOT NULL,
+           FOREIGN KEY(itemId) REFERENCES Item(id)
            );
            */
