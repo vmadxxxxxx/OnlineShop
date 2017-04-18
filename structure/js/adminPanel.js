@@ -2,35 +2,25 @@ $(function () {
 
     var delBtnsUser = $('.btnDelUser');
 
-    delBtnsUser.click(function (e) {
+    delBtnsUser.click(function () {
 
-        e.preventDefault();
+
         var btn = $(this);
-        
+
         var id = btn.parent().siblings().first().text();
-       
-        
-       console.log(id);
-        
-        
+
         $.ajax({
-            url: './resources/api/admin.php',
+            url: 'adminPanel.php',
             dataType: 'json',
-            data: 'id='+id,
-            type: 'DELETE'
-
-        }).done(function () {
-            btn.parent().parent().remove();
-            alert('jes');
-
-        }).fail(function () {
-            alert('chujnia');
+            data: 'id=' + id,
+            type: 'DELETE',
+          success: (btn.parent().parent().remove(), alert("User deleted"))
         });
 
 
+
+
     });
-
-
 });
 
 
