@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     echo "Success!<br>";
                     header("Refresh: 1 index.php?");
-                    
+
                 } catch (Exception $e) {
                     echo "Uwaga: " . $e->getMessage() . "\n";
                     return false;
@@ -41,16 +41,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     echo "Success!<br>";
                     header("Refresh: 1 index.php?");
-                    
+
                 } catch (Exception $e) {
                     echo "Uwaga: " . $e->getMessage() . "\n";
                     return false;
                 }
-                
+
+            } else {
+
+                echo "Wrong password";
             }
         }
-        
-        
+
+
         else {
             echo "E-mail doesn't exist in database!";
         }

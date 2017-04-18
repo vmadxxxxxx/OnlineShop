@@ -137,7 +137,7 @@ class User extends activeRecord {
         }
         return null;
     }
-    
+
 
     static public function loadByEmail($email) {
         self::connect();
@@ -151,7 +151,7 @@ class User extends activeRecord {
         }
         return null;
     }
-    
+
     static public function verifyPassword($password, $email) {
         $sql = "SELECT passwordHash FROM User WHERE email = '$email'";
         $result = self::$db->conn->query($sql);
@@ -169,11 +169,13 @@ class User extends activeRecord {
 
 //sql query for creating table for users
 //
-// CREATE TABLE User (
-//         id int AUTO_INCREMENT,
-//         name text(20) NOT NULL,
-//         surname text(20) NOT NULL,
-//         email varchar(50) NOT NULL UNIQUE,
-//         passwordHash varchar(100) NOT NULL,
-//         PRIMARY KEY(id)
-//         );
+/*
+ CREATE TABLE User (
+         id int AUTO_INCREMENT,
+         name text(20) NOT NULL,
+         surname text(20) NOT NULL,
+         email varchar(50) NOT NULL UNIQUE,
+         passwordHash varchar(100) NOT NULL,
+         PRIMARY KEY(id)
+         );
+         */

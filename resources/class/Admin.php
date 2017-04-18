@@ -90,7 +90,7 @@ class Admin extends activeRecord {
         }
         return true;
     }
-    
+
     //delete function avalible only for admin users
     public function delete() {
         if ($this->id != -1) {
@@ -135,7 +135,7 @@ class Admin extends activeRecord {
         }
         return null;
     }
-    
+
 
     static public function loadByEmail($email) {
         self::connect();
@@ -149,7 +149,7 @@ class Admin extends activeRecord {
         }
         return null;
     }
-    
+
     static public function verifyPassword($password, $email) {
         $sql = "SELECT passwordHash FROM Admin WHERE email = '$email'";
         $result = self::$db->conn->query($sql);
@@ -167,10 +167,13 @@ class Admin extends activeRecord {
 //
 //sql query for creating table for admins
 //
-// CREATE TABLE Admin (
-//         id int AUTO_INCREMENT,
-//         name text(20) NOT NULL,
-//         email varchar(50) NOT NULL UNIQUE,
-//         passwordHash varchar(100) NOT NULL,
-//         PRIMARY KEY(id)
-//         );
+/*
+CREATE TABLE Admin (
+         id int AUTO_INCREMENT,
+         name text(20) NOT NULL,
+         email varchar(50) NOT NULL UNIQUE,
+         passwordHash varchar(100) NOT NULL,
+         PRIMARY KEY(id)
+         );
+
+         */
