@@ -2,7 +2,7 @@
 define('TITLE', "Browse Shop;");
 include('structure/header.php');
 
-$image = Image::loadByItemId(3);
+$image = Image::loadByItemId(1);
 $path = $image->getSource();
 echo $path;
 var_dump($image);

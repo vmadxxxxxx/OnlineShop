@@ -1,6 +1,15 @@
 <?php
 define('TITLE', "Admin Panel");
-include('structure/header.php');
+
+
+include($_SERVER['DOCUMENT_ROOT']."/OnlineShop/structure/header.php");
+
+
+
+
+
+
+
 
 if (isset($_SESSION['adminEmail'])) {
     
@@ -17,6 +26,23 @@ if (isset($_SESSION['adminEmail'])) {
     echo "</table>";
     
 }
+
+// receiving json from adminPanel.js and action after clicking delete User button
+if  ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+
+
+    parse_str(file_get_contents("php://input"), $del_vars);
+
+    $id = intval($del_vars['id']);
+    
+    $toDelete = User::loadById($id);
+
+
+    $result = $toDelete->delete($id);
+
+}
+
+
 
 
 include('structure/footer.php');
