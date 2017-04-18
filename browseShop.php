@@ -2,6 +2,14 @@
 define('TITLE', "Browse Shop;");
 include('structure/header.php');
 
+// $pictures = Image::loadAllById(3);
+
+// foreach ($pictures as $val) {
+//  $sciezka = $val->getSource();
+//  echo "$sciezka <br>";
+//
+// }
+
 // $image = Image::loadByItemId(3);
 // $path = $image->getSource();
 
@@ -14,7 +22,7 @@ $items = Item::loadAll();
         $images = Image::loadByItemId($itemId);
         $path = $images->getSource();
         echo "<tr><td>".$key->getId()."</td><td>".$key->getName()."</td><td>".$key->getPrice()."</td><td>".$key->getDescription()."</td><td>"
-        ."<img src='$path' width='130' height='80'/>"."</td></tr>";
+        ."<a href='$path'><img src='$path' width='130' height='80'/></a>"."</td></tr>";
 
     }
     echo "</table>";
