@@ -3,7 +3,7 @@
 class Item extends activeRecord {
 
     private $name;
-    private $price
+    private $price;
     private $description;
 
     public function __construct() {
