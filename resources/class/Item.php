@@ -125,7 +125,7 @@ class Item extends activeRecord {
         return null;
     }
 
-
+}
   // sql query for creating table for Items
 
   /*

@@ -69,14 +69,14 @@ $adminUser = "
                 
                 <div class='collapse navbar-collapse' id='nav-rolled'>
                         <ul class='nav navbar-nav col-md-8'>
-                            <li class='active'><a href='#items'>Browse Shop</a></li>
+                            <li class='active'><a href='#items'>Browse Shop <span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></li>
                             <li><a href='#messages'>Messages <span class='glyphicon glyphicon-envelope' aria-hidden='true'></span></a></li>
                             <li><a href='#myOrders'>My orders</a></li>
                             <li><a href='#cart'>Cart <span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
                         </ul>
                 
                         <ul class='nav navbar-nav navbar-right'>
-                            <li><a href='#admin'>Admin Panel</a></li>
+                            <li><a href='./adminPanel.php'>Admin Panel</a></li>
                             <li><a href='./contact.php'>Contact</a></li>
                             <li><a href='./logOut.php'>Log out</a></li>
                         </ul>
