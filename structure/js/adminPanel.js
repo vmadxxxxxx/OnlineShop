@@ -1,7 +1,7 @@
 $(function () {
 
 
-    //ajax for deleting user from database and list
+    //ajax for deleting user from database and table
     var delBtnsUser = $('.btnDelUser');
 
     delBtnsUser.click(function () {
@@ -19,7 +19,7 @@ $(function () {
         });
     });
 
-    //ajax for deleting item from database and list
+    //ajax for deleting item from database and table
     var delBtnsItem = $('.btnDelItem');
 
     delBtnsItem.click(function () {
@@ -27,14 +27,27 @@ $(function () {
         var btnDelItem = $(this);
 
         var idItem = btnDelItem.parent().siblings().first().text();
-console.log(idItem);
+
+        var id = "id=" + idItem;
+
         $.ajax({
             url: './resources/api/adminEditItem.php',
-            dataType: 'json',
-            data: 'id=' + idItem,
-            type: 'DELETE',
-            success: (btnDelItem.parent().parent().remove(), alert("Item deleted"))
+            dataType: "json",
+            data: id,
+            type: 'DELETE'
+        }).done(function (success) {
+            if (success) {
+                btnDelItem.parent().parent().remove();
+
+            }
+        }).fail(function () {
+            alert('huj');
         });
+
+
+
+
+
     });
 
 });
