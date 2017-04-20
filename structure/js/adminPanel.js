@@ -27,7 +27,7 @@ $(function () {
         var btnDelItem = $(this);
 
         var idItem = btnDelItem.parent().siblings().first().text();
-
+console.log(idItem);
         $.ajax({
             url: './resources/api/adminEditItem.php',
             dataType: 'json',

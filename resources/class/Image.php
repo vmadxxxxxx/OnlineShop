@@ -82,9 +82,9 @@ class Image extends activeRecord {
     }
 
     //delete function avalible only for admin users
-    public function delete($id) {
+    public function delete() {
         if ($this->id != -1) {
-            if (self::$db->conn->query("DELETE FROM Image WHERE id=$id")) {
+            if (self::$db->conn->query("DELETE FROM Image WHERE id=$this->id")) {
                 $this->id = -1;
                 return true;
             }
