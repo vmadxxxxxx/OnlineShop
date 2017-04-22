@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
 
     $result = $toDeleteItem->delete();
 
-    return json_encode($result);
+    echo json_encode($result);
     //not finished, errors with deleting item (deleting user works fine)
 }
 

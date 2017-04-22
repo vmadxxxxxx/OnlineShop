@@ -1,6 +1,6 @@
 <?php
 
-class Item extends activeRecord {
+class Item extends activeRecord implements JsonSerializable {
 
     private $name;
     private $price;
@@ -42,7 +42,7 @@ class Item extends activeRecord {
         $this->description = $description;
     }
 
-    //creating new Item and updateing Item that already exists
+    //creating new Item and updating Item that already exists
     public function save() {
         if (self::$db->conn != null) {
             if ($this->id == -1) {
@@ -81,17 +81,33 @@ class Item extends activeRecord {
     }
 
     //delete function avalible only for admin users
+//    public function delete() {
+//        if ($this->id != -1) {
+//            if (self::$db->conn->query("DELETE FROM Item WHERE id=$this->id")) {
+//                $this->id = -1;
+//                return [json_encode($this)];
+//            }
+//            return [];
+//        }
+//        return false;
+//    }
     public function delete() {
-        if ($this->id != -1) {
-            if (self::$db->conn->query("DELETE FROM Item WHERE id=$this->id")) {
-                $this->id = -1;
-                return true;
-            }
-            return false;
+        $id = $this->getId();
+        $sql = "DELETE FROM Item WHERE id=:id";
+        $stmt = self::$db->conn->prepare($sql);
+        $result = $stmt->execute(['id' => $id]);
+        if ($result === true) {
+            $this->id = -1;
+            return [$this];
+        } else {
+            return [];
         }
-        return true;
+        
     }
-
+    
+//    public function delete() {
+//        return [json_encode('hejjj')];
+//    }
 
     static public function loadAll() {
         self::connect();
@@ -124,6 +140,17 @@ class Item extends activeRecord {
             return $loadedItem;
         }
         return null;
+    }
+    
+    public function jsonSerialize() {
+        //metoda interfejsu
+        //ta tablica bedzie zwrocona przy przekazaniu obiektu do json_encode()
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'price' => $this->price,
+            'description' => $this->description,
+        ];
     }
 
   }

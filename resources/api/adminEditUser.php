@@ -13,7 +13,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/OnlineShop/structure/header.php');
 
         $resultUser = $toDeleteUser->delete();
         
-
+        echo json_encode($resultUser);
      
 }
 

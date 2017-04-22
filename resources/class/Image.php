@@ -170,6 +170,6 @@ CREATE TABLE Image (
            name text(20),
            source varchar(250),
            itemId int NOT NULL,
-           FOREIGN KEY(itemId) REFERENCES Item(id)
+           FOREIGN KEY(itemId) REFERENCES Item(id) ON DELETE CASCADE
            );
            */

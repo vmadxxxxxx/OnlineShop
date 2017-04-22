@@ -5,7 +5,6 @@ define('TITLE', "Admin Panel");
 include($_SERVER['DOCUMENT_ROOT'] . "/OnlineShop/structure/header.php");
 
 
-
 if (isset($_SESSION['adminEmail'])) {
     
     //creating table with all Users and buttons to delete them

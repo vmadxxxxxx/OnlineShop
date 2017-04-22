@@ -1,6 +1,6 @@
 <?php
 
-class User extends activeRecord {
+class User extends activeRecord implements JsonSerializable {
 
     private $name;
     private $surname;
@@ -96,11 +96,11 @@ class User extends activeRecord {
         if ($this->id != -1) {
             if (self::$db->conn->query("DELETE FROM User WHERE id=$this->id")) {
                 $this->id = -1;
-                return true;
+                return [$this];
             }
-            return false;
+            return [];
         }
-        return true;
+        return [];
     }
 
     static public function loadAll() {
@@ -164,6 +164,18 @@ class User extends activeRecord {
             }
         }
         return false;
+    }
+    
+    public function jsonSerialize() {
+        //metoda interfejsu
+        //ta tablica bedzie zwrocona przy przekazaniu obiektu do json_encode()
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'surname' => $this->surname,
+            'email' => $this->email,
+            'passwordHash' => $this->passwordHash
+        ];
     }
 }
 
