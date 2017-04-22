@@ -60,7 +60,7 @@ class Admin extends activeRecord implements JsonSerializable {
                     echo self::$db->conn->error;
                 }
             } else {
-                $sql = "UPDATE User SET name = :name, email = :email, passwordHash = :passwordHash WHERE id = $this->id";
+                $sql = "UPDATE Admin SET name = :name, email = :email, passwordHash = :passwordHash WHERE id = $this->id";
 
                 $stmt = self::$db->conn->prepare($sql);
                 $result = $stmt->execute([
