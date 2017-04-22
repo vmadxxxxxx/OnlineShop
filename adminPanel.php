@@ -10,7 +10,7 @@ if (isset($_SESSION['adminEmail'])) {
     <!--form for sending message to all users -->
     <br>
     <div class="form-group center-block">
-        <form action="" methos="POST">
+        <form action="" method="POST">
             <label for='msg'>Send message to all users</label>
             <textarea class='form-control' name='msg'></textarea>
             <button type="submit" class="btnSendMsgs btn" name="btnSendMsgs">Send</button>
@@ -55,6 +55,18 @@ if (isset($_SESSION['adminEmail'])) {
         . "<td class='danger'><button type='submit' class='btnDelAdmin btn' name='btnDelAdmin'>Delete</button></td></tr>";
     }
     echo "</table></div>";
+    
+    
+    if ($_SERVER['REQUEST_METHOD'] === "POST") {
+        if (isset($_POST['msg'])) {
+            $message = $_POST['msg'];
+            
+          
+            $receivers = User::loadAll();
+            
+            //foreach
+        }
+    }
 }
 
 

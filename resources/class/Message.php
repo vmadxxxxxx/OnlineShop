@@ -156,11 +156,12 @@ class Message extends activeRecord implements JsonSerializable {
   /*
    CREATE TABLE Message (
            id int AUTO_INCREMENT,
-           sender text NOT NULL,
+           sender int NOT NULL,
            receiver int NOT NULL,
            content varchar(255),
            date date,
            PRIMARY KEY(id),
-           FOREIGN KEY(receiver) REFERENCES User(id)
+           FOREIGN KEY(receiver) REFERENCES User(id),
+           FOREIGN KEY(sender) REFERENCES Admin(id)
            );
            */
