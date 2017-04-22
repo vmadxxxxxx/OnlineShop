@@ -1,7 +1,7 @@
 <?php
 
 abstract class activeRecord implements activeRecordInterface {
-    private $id;
+    protected $id;
     protected static $db;
     public function __construct(){
         self::connect();
