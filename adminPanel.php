@@ -39,7 +39,7 @@ if (isset($_SESSION['adminEmail'])) {
     . "<td><span class='table-col'>Description<span></td><td><span class='table-col'>Edit</span></td></tr>";
     foreach ($items as $key) {
         $idItem = $key->getId();
-        echo "<tr><td>" . $id . "</td><td>" . $key->getName() . "</td><td>" . $key->getPrice() . "</td><td>" . $key->getDescription() . "</td>"
+        echo "<tr><td>" . $idItem . "</td><td>" . $key->getName() . "</td><td>" . $key->getPrice() . "</td><td>" . $key->getDescription() . "</td>"
         . "<td class='danger'><button type='submit' class='btnDelItem btn' name='btnDelItem'>Delete</button></td></tr>";
     }
     echo "</table>";
