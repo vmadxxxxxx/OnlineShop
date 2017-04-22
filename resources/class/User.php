@@ -91,16 +91,18 @@ class User extends activeRecord implements JsonSerializable {
         return false;
     }
 
-    //delete function avalible only for admin users
     public function delete() {
-        if ($this->id != -1) {
-            if (self::$db->conn->query("DELETE FROM User WHERE id=$this->id")) {
-                $this->id = -1;
-                return [$this];
-            }
+        $id = $this->getId();
+        $sql = "DELETE FROM User WHERE id=:id";
+        $stmt = self::$db->conn->prepare($sql);
+        $result = $stmt->execute(['id' => $id]);
+        if ($result === true) {
+            $this->id = -1;
+            return [$this];
+        } else {
             return [];
         }
-        return [];
+        
     }
 
     static public function loadAll() {
