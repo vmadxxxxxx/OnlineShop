@@ -30,6 +30,18 @@ if (isset($_SESSION['adminEmail'])) {
         . "<td><button type='submit' class='btnDelItem btn' name='btnDelItem'>Delete</button></td></tr>";
     }
     echo "</table>";
+    
+    
+    $items = Admin::loadAll();
+    echo "<table class='table'><thead colspan='5'><tr><span class='table-header'>Admins</span></th></tr></thead>"
+    . "<tr><td><span class='table-col'>Id</span></td><td colspan='2'><span class='table-col'>Name</span></td>"
+    . "<td colspan='2'><span class='table-col'>Email<span></td><td><span class='table-col'>Edit</span></td></tr>";
+    foreach ($items as $key) {
+        $id = $key->getId();
+        echo "<tr><td>" . $id . "</td><td colspan='2'>" . $key->getName() . "</td><td colspan='2'>" . $key->getEmail() . "</td>"
+                . "<td><button type='submit' class='btnDelAdmin btn' name='btnDelAdmin'>Delete</button></td></tr>";
+    }
+    echo "</table>";
 
 }
 
