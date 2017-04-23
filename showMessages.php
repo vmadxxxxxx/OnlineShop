@@ -20,10 +20,5 @@ if (isset($_SESSION['id'])) {
     
 }
 
-
-
-
-
-
 include('structure/footer.php');
-?>
+
