@@ -16,10 +16,33 @@ if (isset($_SESSION['adminEmail'])) {
             <button type="submit" class="btnSendMsgs btn" name="btnSendMsgs">Send</button>
         </form>
     </div>
+    
+    
+ <?php
+    if ($_SERVER['REQUEST_METHOD'] === "POST") {
+        if (isset($_POST['msg'])) {
+            $emailAdmin = $_SESSION['adminEmail'];
+            $content = $_POST['msg'];
+            $date = date("Y.m.d H:i:s");
+            $id = Admin::loadByEmail($emailAdmin);
+            $sender = $id['id'];
+            $receivers = User::loadAll();
+
+            foreach ($receivers as $key) {
+                $receiver = $key->getId();
+                $message = new Message();
+                $message->setSender($sender);
+                $message->setReceiver($receiver);
+                $message->setContent($content);
+                $message->setDate($date);
+                $message->save();
+            }
+            echo "Messages sent!";
+        }
+    }
 
 
 
-    <?php
     //creating table with all Users and buttons to delete them
     $users = User::loadAll();
     echo "<div class='panel panel-default table-responsive'><table class='table table-condensed table-hover'><thead colspan='5'><tr><span class='table-header'>Users</span></th></tr></thead>"
@@ -55,18 +78,6 @@ if (isset($_SESSION['adminEmail'])) {
         . "<td class='danger'><button type='submit' class='btnDelAdmin btn' name='btnDelAdmin'>Delete</button></td></tr>";
     }
     echo "</table></div>";
-    
-    
-    if ($_SERVER['REQUEST_METHOD'] === "POST") {
-        if (isset($_POST['msg'])) {
-            $message = $_POST['msg'];
-            
-          
-            $receivers = User::loadAll();
-            
-            //foreach
-        }
-    }
 }
 
 

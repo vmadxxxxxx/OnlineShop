@@ -130,13 +130,11 @@ class Admin extends activeRecord implements JsonSerializable {
 
     static public function loadByEmail($email) {
         self::connect();
-        $sql = "SELECT email FROM Admin WHERE email='$email'";
+        $sql = "SELECT id FROM Admin WHERE email='$email'";
         $result = self::$db->conn->query($sql);
         if ($result && $result->rowCount() == 1) {
             $row = $result->fetch(PDO::FETCH_ASSOC);
-            $loadedEmail = new Admin();
-            $loadedEmail->email = $row['email'];
-            return $loadedEmail;
+            return $row;
         }
         return null;
     }
