@@ -143,13 +143,11 @@ class User extends activeRecord implements JsonSerializable {
 
     static public function loadByEmail($email) {
         self::connect();
-        $sql = "SELECT email FROM User WHERE email='$email'";
+        $sql = "SELECT id FROM User WHERE email='$email'";
         $result = self::$db->conn->query($sql);
         if ($result && $result->rowCount() == 1) {
             $row = $result->fetch(PDO::FETCH_ASSOC);
-            $loadedEmail = new User();
-            $loadedEmail->email = $row['email'];
-            return $loadedEmail;
+            return $row;
         }
         return null;
     }

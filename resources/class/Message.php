@@ -138,6 +138,24 @@ class Message extends activeRecord implements JsonSerializable {
         }
         return null;
     }
+    
+    static public function loadAllByReceiverId($id) {
+        self::connect();
+        $sql = "SELECT * FROM Message where receiver=$id";
+        $returnTable = [];
+        if ($result = self::$db->conn->query($sql)) {
+            foreach ($result as $row) {
+                $loadedMessage = new Message();
+                $loadedMessage->id = $row['id'];
+                $loadedMessage->sender = $row['sender'];
+                $loadedMessage->receiver = $row['receiver'];
+                $loadedMessage->content = $row['content'];
+                $loadedMessage->date = $row['date'];
+                $returnTable[] = $loadedMessage;
+            }
+        }
+        return $returnTable;
+    }
 
     public function jsonSerialize() {
         return [

@@ -19,9 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 try {
 
-
+                    $obj = User::loadByEmail($email);
+                    
                     //assigning session parameters
                     $_SESSION['email'] = $email;
+                    $_SESSION['id'] = $obj['id'];
 
                     echo "Success!<br>";
                     header("Refresh: 1 index.php?");
