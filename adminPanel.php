@@ -51,7 +51,7 @@ if (isset($_SESSION['adminEmail'])) {
     foreach ($users as $key) {
         $idUser = $key->getId();
         echo "<tr><td>" . $idUser . "</td><td>" . $key->getName() . "</td><td>" . $key->getSurname() . "</td><td>" . $key->getEmail() . "</td>"
-        . "<td class='danger'><button type='submit' class='btnDelUser btn' name='btnDelUser'>Delete</button></tr>";
+        . "<td><button type='submit' class='btnDelUser btn btn-danger' name='btnDelUser'>Delete</button></tr>";
     }
     echo "</table>";
 
@@ -63,7 +63,7 @@ if (isset($_SESSION['adminEmail'])) {
     foreach ($items as $key) {
         $idItem = $key->getId();
         echo "<tr><td>" . $idItem . "</td><td>" . $key->getName() . "</td><td>" . $key->getPrice() . "</td><td>" . $key->getDescription() . "</td>"
-        . "<td class='danger'><button type='submit' class='btnDelItem btn' name='btnDelItem'>Delete</button></td></tr>";
+        . "<td><button type='submit' class='btnDelItem btn btn-danger' name='btnDelItem'>Delete</button></td></tr>";
     }
     echo "</table>";
 
@@ -75,7 +75,7 @@ if (isset($_SESSION['adminEmail'])) {
     foreach ($admins as $key) {
         $idAdmin = $key->getId();
         echo "<tr><td>" . $idAdmin . "</td><td colspan='2'>" . $key->getName() . "</td><td colspan='2'>" . $key->getEmail() . "</td>"
-        . "<td class='danger'><button type='submit' class='btnDelAdmin btn' name='btnDelAdmin'>Delete</button></td></tr>";
+        . "<td><button type='submit' class='btnDelAdmin btn btn-danger' name='btnDelAdmin'>Delete</button></td></tr>";
     }
     echo "</table></div>";
 }
