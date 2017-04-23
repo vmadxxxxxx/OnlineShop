@@ -37,7 +37,7 @@ $loggedUser = "
 
                 <div class='collapse navbar-collapse' id='nav-rolled'>
                         <ul class='nav navbar-nav col-md-8'>
-                            <li class='active'><a href='./browseShop.php'>Browse Shop <span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></li>
+                            <li><a href='./browseShop.php'>Browse Shop <span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></li>
                             <li><a href='./showMessages.php'>Messages <span class='glyphicon glyphicon-envelope' aria-hidden='true'></span></a></li>
                             <li><a href='#myOrders'>My orders</a></li>
                             <li><a href='#cart'>Cart <span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
@@ -69,7 +69,7 @@ $adminUser = "
 
                 <div class='collapse navbar-collapse' id='nav-rolled'>
                         <ul class='nav navbar-nav col-md-8'>
-                            <li class='active'><a href='./browseShop.php'>Browse Shop <span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></li>
+                            <li><a href='./browseShop.php'>Browse Shop <span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></li>
                             <li><a href='./showMessages.php'>Messages <span class='glyphicon glyphicon-envelope' aria-hidden='true'></span></a></li>
                             <li><a href='#myOrders'>My orders</a></li>
                             <li><a href='#cart'>Cart <span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>

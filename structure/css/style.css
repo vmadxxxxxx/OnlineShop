@@ -7,7 +7,7 @@
 
 body{
     padding-top: 50px;
-  background: yellow;
+  background-color: #336699;
   text-align:center;
 }
 
@@ -26,12 +26,12 @@ span {
 }
 
 .table-header {
-    color: maroon;
+    color: #087e8b;
     font-size: 30px;
 }
 
 .table-col {
-    color: green;
+    color: #2d3142;
     font-size: 20px;
 }
 
@@ -45,6 +45,14 @@ span {
     width: 390px;
 
 }
-#images{
+#images {
     white-space: nowrap;
+}
+
+.navbar {
+    background-color: #262730;
+}
+
+.panel {
+    background-color: #bfc0c0;
 }
