@@ -55,7 +55,7 @@ class Message extends activeRecord implements JsonSerializable {
     public function save() {
         if (self::$db->conn != null) {
             if ($this->id == -1) {
-                $sql = "INSERT INTO Message (sender, receiver, content. date) values (:sender, :receiver, :content, :date)";
+                $sql = "INSERT INTO Message (sender, receiver, content, date) values (:sender, :receiver, :content, :date)";
                 $stmt = self::$db->conn->prepare($sql);  //MySQL inejction preventing during registering new user
                 $result = $stmt->execute([
                     'sender' => $this->sender,
