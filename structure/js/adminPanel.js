@@ -1,7 +1,8 @@
 $(function () {
 
+    //OPERATIONS ON USERS TABLE
 
-    //ajax for deleting user from database and table
+    //event for clicking delete user button
     var delBtnsUser = $('.btnDelUser');
 
     delBtnsUser.click(function () {
@@ -9,7 +10,7 @@ $(function () {
         var btnDelUser = $(this);
 
         var idUser = btnDelUser.parent().siblings().first().text();
-
+        //ajax for deleting user from database and table
         $.ajax({
             url: './resources/api/adminEditUser.php',
             dataType: 'json',
@@ -30,10 +31,16 @@ $(function () {
 //            alert('error');
 //        });
 
-
     });
 
-    //ajax for deleting item from database and table
+    //event for edit button
+   // var editUserBtns = $('.btnEditUser');
+
+   // editUserBtns
+
+
+
+    //event for clicking delete item button
     var delBtnsItem = $('.btnDelItem');
 
     delBtnsItem.click(function () {
@@ -43,7 +50,7 @@ $(function () {
         var idItem = btnDelItem.parent().siblings().first().text();
 
         var id = "id=" + idItem;
-
+        //ajax for deleting item from database and table
         $.ajax({
             url: 'resources/api/adminEditItem.php',
             dataType: 'json',
@@ -53,18 +60,10 @@ $(function () {
             btnDelItem.parent().parent().remove();
             alert('Item deleted!');
         });
-//         done function doesn't work because json return is invalid
-//        }).done(function (success) {
-//            if (success) {
-//                btnDelItem.parent().parent().remove();
-//
-//            }
-//        }).fail(function (msg, text, error) {
-//            alert(error);
     });
 
 
-//ajax for deleting admin from database and table
+    //event for clicking delete admin button
     var delBtnsAdmin = $('.btnDelAdmin');
 
     delBtnsAdmin.click(function () {
@@ -74,7 +73,7 @@ $(function () {
         var idAdmin = btnDelAdmin.parent().siblings().first().text();
 
         var id = "id=" + idAdmin;
-
+        //ajax for deleting admin from database and table
         $.ajax({
             url: 'resources/api/adminEditAdmin.php',
             dataType: 'json',
@@ -84,14 +83,6 @@ $(function () {
             btnDelAdmin.parent().parent().remove();
             alert('Admin deleted!');
         });
-//         done function doesn't work because json return is invalid
-//        }).done(function (success) {
-//            if (success) {
-//                btnDelItem.parent().parent().remove();
-//
-//            }
-//        }).fail(function (msg, text, error) {
-//            alert(error);
     });
 
 });
