@@ -43,30 +43,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-
-
-
-
-
-
-
-
-
 <h2>Register new account</h2><br>
 
 <form action="" method="POST">
     <div class="form-group center-block">
         <label for="name" class="control-label">Name:</label>
 
-        <input class="form-control" id="name" type="text" name ="name"></input>
+        <input class="form-control" id="name" type="text" name ="name"></input><br>
 
         <label class="control-label" for="surname">Surname</label>
 
-        <input class="form-control" id="surname" type="text" name="surname"></input>
+        <input class="form-control" id="surname" type="text" name="surname"></input><br>
 
         <label class="control-label" for="email">Email</label>
 
-        <input class="form-control" id="email" type="email" name="email"></input>
+        <input class="form-control" id="email" type="email" name="email"></input><br>
 
         <label class="control-label" for="passwd">Password</label>
 
@@ -74,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <br>
 
 
-        <button class="btn-primary" type="submit" name="submit">Send</button>
+        <button class="btn btn-info" type="submit" name="submit">Send</button>
 
     </div>
 </form>

@@ -64,14 +64,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<h2>Log In</h2>
-<div class="form-inline">
+<h2>Log In</h2><br>
+
+<div class="form-group center-block">
     <form action="" method="POST">
-        <label class="label">Email</label>
-        <input class="input-sm" type="email" name ="email"></input><br><br>
-        <label class="label">Password</label>
-        <input class="input-sm" type="password" name="passwd"></input><br><br>
-        <button class="btn-primary" type="submit" name="submit">Confirm</button><br><br>
+        <label class="control-label">Email</label>
+        <input class="form-control" type="email" name ="email"></input><br><br>
+        <label class="control-label">Password</label>
+        <input class="form-control" type="password" name="passwd"></input><br><br>
+        <button class="btn btn-info" type="submit" name="submit">Confirm</button><br><br>
     </form>
 </div>
 
