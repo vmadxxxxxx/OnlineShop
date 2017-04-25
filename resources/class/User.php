@@ -98,7 +98,7 @@ class User extends activeRecord implements JsonSerializable {
         $result = $stmt->execute(['id' => $id]);
         if ($result === true) {
             $this->id = -1;
-            return [$this];
+            return [json_encode($this)];
         } else {
             return [];
         }

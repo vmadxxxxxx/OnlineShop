@@ -1,6 +1,8 @@
 <?php
-
-include($_SERVER['DOCUMENT_ROOT'] . '/OnlineShop/structure/header.php');
+require_once('../config.php');
+require_once('../class/activeRecordInterface.php');
+require_once('../class/activeRecord.php');
+require_once('../class/Admin.php');
 
 // receiving json from adminPanel.js and action after clicking delete Admin button
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
@@ -15,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     $result = $toDeleteAdmin->delete();
 
     echo json_encode($result);
-    //json is not returned, error
+
 }
 
-include($_SERVER['DOCUMENT_ROOT'] . '/OnlineShop/structure/footer.php');

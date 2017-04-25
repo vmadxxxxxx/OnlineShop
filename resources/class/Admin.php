@@ -87,7 +87,7 @@ class Admin extends activeRecord implements JsonSerializable {
         $result = $stmt->execute(['id' => $id]);
         if ($result === true) {
             $this->id = -1;
-            return [$this];
+            return [json_encode($this)];
         } else {
             return [];
         }
@@ -159,8 +159,8 @@ class Admin extends activeRecord implements JsonSerializable {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'price' => $this->price,
-            'description' => $this->description,
+            'email' => $this->email,
+            'passwordHash' => $this->passwordHash,
         ];
     }
 }

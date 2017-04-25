@@ -16,28 +16,20 @@ $(function () {
             dataType: 'json',
             data: 'id=' + idUser,
             type: 'DELETE'
-        }).always(function () {
-            btnDelUser.parent().parent().remove();
-            alert('User deleted!');
+            }).done(function (success) {
+            if (success) {
+                btnDelUser.parent().parent().remove();
+            }
+        }).fail(function () {
+            alert('error');
         });
-
-//         done function doesn't work because json return is invalid
-//            }).done(function (success) {
-//            if (success) {
-//                btnDelUser.parent().parent().remove();
-//
-//            }
-//        }).fail(function () {
-//            alert('error');
-//        });
-
     });
 
     //event for edit button
    // var editUserBtns = $('.btnEditUser');
 
    // editUserBtns
-
+////////////////
 
 
     //event for clicking delete item button
@@ -56,9 +48,12 @@ $(function () {
             dataType: 'json',
             data: id,
             type: 'DELETE'
-        }).always(function () {
-            btnDelItem.parent().parent().remove();
-            alert('Item deleted!');
+        }).done(function (success) {
+            if (success) {
+                btnDelItem.parent().parent().remove();
+            }
+        }).fail(function () {
+            alert('error');
         });
     });
 
@@ -79,9 +74,12 @@ $(function () {
             dataType: 'json',
             data: id,
             type: 'DELETE'
-        }).always(function () {
-            btnDelAdmin.parent().parent().remove();
-            alert('Admin deleted!');
+        }).done(function (success) {
+            if (success) {
+                btnDelAdmin.parent().parent().remove();
+            }
+        }).fail(function () {
+            alert('error');
         });
     });
 

@@ -1,6 +1,9 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . '/OnlineShop/structure/header.php');
+require_once('../config.php');
+require_once('../class/activeRecordInterface.php');
+require_once('../class/activeRecord.php');
+require_once('../class/Item.php');
 
 // receiving json from adminPanel.js and action after clicking delete Item button
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
@@ -15,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     $result = $toDeleteItem->delete();
 
     echo json_encode($result);
-    //not finished, errors with deleting item (deleting user works fine)
+   
 }
 
-include($_SERVER['DOCUMENT_ROOT'] . '/OnlineShop/structure/footer.php');
+

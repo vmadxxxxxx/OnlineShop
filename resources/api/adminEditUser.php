@@ -1,5 +1,9 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/OnlineShop/structure/header.php');
+require_once('../config.php');
+require_once('../class/activeRecordInterface.php');
+require_once('../class/activeRecord.php');
+require_once('../class/User.php');
+
 
 // receiving json from adminPanel.js and action after clicking delete User button
     if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
@@ -16,5 +20,3 @@ include($_SERVER['DOCUMENT_ROOT'].'/OnlineShop/structure/header.php');
         echo json_encode($resultUser);
      
 }
-
-include($_SERVER['DOCUMENT_ROOT'].'/OnlineShop/structure/footer.php');

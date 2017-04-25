@@ -80,17 +80,6 @@ class Item extends activeRecord implements JsonSerializable {
         return false;
     }
 
-    //delete function avalible only for admin users
-//    public function delete() {
-//        if ($this->id != -1) {
-//            if (self::$db->conn->query("DELETE FROM Item WHERE id=$this->id")) {
-//                $this->id = -1;
-//                return [json_encode($this)];
-//            }
-//            return [];
-//        }
-//        return false;
-//    }
     public function delete() {
         $id = $this->getId();
         $sql = "DELETE FROM Item WHERE id=:id";
@@ -98,7 +87,7 @@ class Item extends activeRecord implements JsonSerializable {
         $result = $stmt->execute(['id' => $id]);
         if ($result === true) {
             $this->id = -1;
-            return [$this];
+            return [json_encode($this)];
         } else {
             return [];
         }

@@ -98,7 +98,7 @@ class Message extends activeRecord implements JsonSerializable {
         $result = $stmt->execute(['id' => $id]);
         if ($result === true) {
             $this->id = -1;
-            return [$this];
+            return [json_encode($this)];
         } else {
             return [];
         }
@@ -179,7 +179,7 @@ class Message extends activeRecord implements JsonSerializable {
            content varchar(255),
            date date,
            PRIMARY KEY(id),
-           FOREIGN KEY(receiver) REFERENCES User(id),
+           FOREIGN KEY(receiver) REFERENCES User(id) ON DELETE CASCADE,
            FOREIGN KEY(sender) REFERENCES Admin(id)
            );
            */
