@@ -13,8 +13,8 @@ if (isset($_SESSION['adminEmail'])) {
             <button type="submit" class="btnSendMsgs btn" name="btnSendMsgs">Send</button>
         </form>
     </div>
-    
- <?php
+
+    <?php
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (isset($_POST['msg'])) {
             $emailAdmin = $_SESSION['adminEmail'];
@@ -39,54 +39,96 @@ if (isset($_SESSION['adminEmail'])) {
 
     //creating table with all Users and buttons to delete and edit them
     $users = User::loadAll();
-    echo ""
-    . "<div class='panel panel-default table-responsive'>"
-            . "<table class='table table-condensed table-hover'>"
-                . "<thead><tr><span class='table-header'>Users</span></th></tr></thead>"
-                    . "<tr><td><span class='table-col'>Id</span></td><td><span class='table-col'>Name</span></td>"
-                    . "<td><span class='table-col'>Surname</span></td><td><span class='table-col'>E-mail<span></td>"
-                    . "<td><span class='table-col'>Action</span></td></tr>";
-    
+    ?>
+    <div class='panel panel-default table-responsive'>
+        <table class='table table-condensed table-hover'>
+            <thead>
+                <tr><span class='table-header'>Users</span></th></tr>
+            </thead>
+            <tr>
+                <td><span class='table-col'>Id</span></td><td><span class='table-col'>Name</span></td>
+                <td><span class='table-col'>Surname</span></td><td><span class='table-col'>E-mail<span></td>
+                <td><span class='table-col'>Action</span></td>
+            </tr>
+<?php
     foreach ($users as $key) {
-        $idUser = $key->getId();
-        echo "<tr><td>" . $idUser . "</td><td>" . $key->getName() . "</td><td>" . $key->getSurname() . "</td><td>" . $key->getEmail() . "</td>"
-           . "<td><button type='submit' class='btnSendMsg btn btn-primary' name='btnSendMsg'>Send Message </button> "
-           . "<button type='submit' class='btnEditUser btn btn-info' name='btnEditUser'>Edit </button> "  
-           . "<button type='submit' class='btnDelUser btn btn-danger' name='btnDelUser'>Delete </button></tr>";
-    }
-    echo "</table>";
+        $idUser = $key->getId(); ?>
+            <tr>
+                <td><?php echo $idUser ?></td>
+                <td><?php echo $key->getName();?></td>
+                <td><?php echo $key->getSurname(); ?></td>
+                <td><?php echo $key->getEmail(); ?></td>
+                <td><button type='submit' class='btnSendMsg btn btn-primary' name='btnSendMsg'>Send Message </button> 
+                    <button type='submit' class='btnEditUser btn btn-info' name='btnEditUser'>Edit </button> 
+                    <button type='submit' class='btnDelUser btn btn-danger' name='btnDelUser'>Delete </button>
+            </tr>
+            
+<?php 
 
-    //table with all items
-    $items = Item::loadAll();
-    echo "<table class='table table-hover table-condensed'>"
-             . "<thead><tr><span class='table-header'>Items</span></th></tr></thead>"
-                    . "<tr><td><span class='table-col'>Id</span></td><td><span class='table-col'>Name</span></td>"
-                    . "<td><span class='table-col'>Price</span></td><td><span class='table-col'>Description<span></td>"
-                    . "<td><span class='table-col'>Action</span></td></tr>";
-    
+    } 
+        $items = Item::loadAll();
+?>
+            
+        </table>
+                            <!-- table with all items -->  
+        <table class='table table-hover table-condensed'>
+            <thead>
+                <tr><span class='table-header'>Items</span></th></tr>
+            </thead>
+                <tr>
+                    <td><span class='table-col'>Id</span></td>
+                    <td><span class='table-col'>Name</span></td>
+                    <td><span class='table-col'>Price</span></td>
+                    <td><span class='table-col'>Description<span></td>
+                    <td><span class='table-col'>Action</span></td></tr>
+
+<?php
     foreach ($items as $key) {
         $idItem = $key->getId();
-        echo "<tr><td>" . $idItem . "</td><td>" . $key->getName() . "</td><td>" . $key->getPrice() . "</td><td>" . $key->getDescription() . "</td>"
-           . "<td><button type='submit' class='btnEditItem btn btn-primary' name='btnEditItem'>Add Image </button> "
-           . "<button type='submit' class='btnAddImage btn btn-info' name='btnAddImage'>Edit </button> "     
-           . "<button type='submit' class='btnDelItem btn btn-danger' name='btnDelItem'>Delete </button></td></tr>";
+?>
+                <tr>
+                    <td><?php echo $idItem; ?></td>
+                    <td><?php echo $key->getName(); ?></td>
+                    <td><?php echo $key->getPrice(); ?></td>
+                    <td><?php echo $key->getDescription(); ?></td>
+                    <td><button type='submit' class='btnEditItem btn btn-primary' name='btnEditItem'>Add Image </button>
+                        <button type='submit' class='btnAddImage btn btn-info' name='btnAddImage'>Edit </button>
+                        <button type='submit' class='btnDelItem btn btn-danger' name='btnDelItem'>Delete </button></td>
+                </tr>
+<?php
+    }   
+        $admins = Admin::loadAll();
+?>
+        </table>
+                            <!-- table with all admins -->
+                            
+        <table class='table table-hover table-condensed'>
+            <thead>
+                <tr colspan='6'><span class='table-header'>Admins</span></th></tr>
+            </thead>
+                <tr>
+                    <td><span class='table-col'>Id</span></td>
+                    <td colspan='2'><span class='table-col'>Name</span></td>
+                    <td colspan='2'><span class='table-col'>Email<span></td>
+                    <td><span class='table-col'>Action</span></td></tr>
+<?php
+                            foreach ($admins as $key) {
+                                $idAdmin = $key->getId();
+?>
+                <tr>
+                    <td><?php echo $idAdmin?></td>
+                    <td colspan='2'><?php echo $key->getName() ?></td>
+                    <td colspan='2'><?php echo $key->getEmail() ?></td>
+                    <td><button type='submit' class='btnAddAdmin btn btn-primary' name='btnAddAdmin'>Add Admin </button>
+                        <button type='submit' class='btnEditAdmin btn btn-info' name='btnEditAdmin'>Edit </button>
+                        <button type='submit' class='btnDelAdmin btn btn-danger' name='btnDelAdmin'>Delete </button></td></tr>
+<?php
     }
-    echo "</table>";
-
-    //table with all admins
-    $admins = Admin::loadAll();
-    echo "<table class='table table-hover table-condensed'><thead><tr colspan='6'><span class='table-header'>Admins</span></th></tr></thead>"
-    . "<tr><td><span class='table-col'>Id</span></td><td colspan='2'><span class='table-col'>Name</span></td>"
-    . "<td colspan='2'><span class='table-col'>Email<span></td><td><span class='table-col'>Action</span></td></tr>";
-    foreach ($admins as $key) {
-        $idAdmin = $key->getId();
-        echo "<tr><td>" . $idAdmin . "</td><td colspan='2'>" . $key->getName() . "</td><td colspan='2'>" . $key->getEmail() . "</td>"
-            . "<td><button type='submit' class='btnAddAdmin btn btn-primary' name='btnAddAdmin'>Add Admin </button> "
-            . "<button type='submit' class='btnEditAdmin btn btn-info' name='btnEditAdmin'>Edit </button> "
-            . "<button type='submit' class='btnDelAdmin btn btn-danger' name='btnDelAdmin'>Delete </button></td></tr>";
+?>
+        </table>
+    </div>
+<?php
     }
-    echo "</table></div>";
-}
 
 include('structure/footer.php');
 ?>
