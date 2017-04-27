@@ -1,26 +1,8 @@
-
-
-
 <?php
+//NAVBAR FOR REGULAR LOGGED IN USER
+if (isset($_SESSION['email'])) { ?>
 
-$newUser = "
-<nav class='navbar navbar-inverse navbar-fixed-top'>
-    <div class='container'>
-        <div class='navbar-header navbar-left'>
-            <a class='navbar-brand' href='index.php'>Online Shop</a>
-        </div>
-        <div id='navabar' class='navbar-right'>
-            <ul class='nav navbar-nav'>
-                <li><a href='./contact.php'>Contact</a></li>
-                <li><a href='./registerForm.php'>Register</a></li>
-                <li><a href='./loginForm.php'>Login</a></li>
-            </ul>
-        </div>
-    </div>
-</nav> ";
-
-$loggedUser = "
-        <nav class='navbar navbar-default navbar-fixed-top navbar-inverse'>
+<nav class='navbar navbar-default navbar-fixed-top navbar-inverse'>
             <div class='container-fluid'>
                 <div class='navbar-header navbar-left col-md-2'>
                     <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#nav-rolled'>
@@ -49,10 +31,14 @@ $loggedUser = "
                         </ul>
                 </div>
             </div>
-        </nav>";
+        </nav>
+    
+<?php 
+//NAVBAR FOR ADMIN USER
+} else if (isset($_SESSION['adminEmail'])) {
+    ?>
 
-$adminUser = "
-        <nav class='navbar navbar-default navbar-fixed-top navbar-inverse'>
+    <nav class='navbar navbar-default navbar-fixed-top navbar-inverse'>
             <div class='container-fluid'>
                 <div class='navbar-header navbar-left col-md-2'>
                     <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#nav-rolled'>
@@ -82,13 +68,29 @@ $adminUser = "
                         </ul>
                 </div>
             </div>
-        </nav>";
+        </nav>
 
-if (isset($_SESSION['email'])) {
-    echo $loggedUser;
-} else if (isset($_SESSION['adminEmail'])) {
-    echo $adminUser;
+  <?php  
+  //NAVBAR FOR NEW USER
 } else {
-    echo $newUser;
+    ?>
+
+    <nav class='navbar navbar-inverse navbar-fixed-top'>
+    <div class='container'>
+        <div class='navbar-header navbar-left'>
+            <a class='navbar-brand' href='index.php'>Online Shop</a>
+        </div>
+        <div id='navabar' class='navbar-right'>
+            <ul class='nav navbar-nav'>
+                <li><a href='./contact.php'>Contact</a></li>
+                <li><a href='./registerForm.php'>Register</a></li>
+                <li><a href='./loginForm.php'>Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<?php
+
 }
-?>
+
