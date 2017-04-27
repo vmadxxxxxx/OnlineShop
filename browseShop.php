@@ -3,7 +3,7 @@
 define('TITLE', "Browse Shop;");
 include('structure/header.php');
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) || isset($_SESSION['adminEmail'])) {
     $items = Item::loadAll();
 
     echo "<table class='table'><thead colspan='4'><tr><span class='table-header'>Items</span></th></tr></thead><tr><td><span class='table-col'>Id</span></td><td><span class='table-col'>Name</span></td><td><span class='table-col'>Price</span></td><td><span class='table-col'>Description<span></td><td class='img'><span class='table-col'>Image<span></td></tr>";
