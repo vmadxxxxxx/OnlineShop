@@ -29,9 +29,9 @@ $(function () {
     var editBtnsUser = $('.btnEditUser');
 
     editBtnsUser.on('click', function () {
-        var name = $(this).parent().parent().find('#userName').text();
-        var surname = $(this).parent().parent().find('#userSurname').text();
-        var email = $(this).parent().parent().find('#userEmail').text();
+        var name = $(this).parent().parent().find('.userName').text();
+        var surname = $(this).parent().parent().find('.userSurname').text();
+        var email = $(this).parent().parent().find('.userEmail').text();
 
         var form = (' <form><label>Name<input name="newName" type="text" value=' + name + '></label>\n\
                             <label>Surname<input type="text" name="newSurname" value=' + surname + '></label>\n\
@@ -42,14 +42,15 @@ $(function () {
     });
 
     //event for confirming edit user
-    var divTable = $('.tableUsers');
+    var tr = $('.trUsers');
 
-    divTable.on('click', 'button#userEditConf', function (e) {
+    tr.on('click', 'button#userEditConf', function (e) {
         e.preventDefault();
-        var id = $(this).parent().parent().parent().find('#userId').text();
-        var name = $(this).parent().find('input[name=newName]').val();
+        var id = $(this).parent().parent().parent().find('.userId').text();
+        var name = $(this).parent().parent().parent().find('input[name=newName]').val();
         var surname = $(this).parent().find('input[name=newSurname]').val();
         var email = $(this).parent().find('input[name=newEmail]').val();
+        confBtn = $(this);
         
         $.ajax({
             url: 'resources/api/adminEditUser.php',
@@ -58,9 +59,15 @@ $(function () {
             type: 'PUT'
         }).done(function (success) {
             if (success) {
-                divTable.fadeOut(800, function () {
-                    divTable.fadeIn().delay(2000);
-                });
+
+                tr.fadeOut(400, function () {
+                    tr.fadeIn().delay(1000);
+                    confBtn.parent().parent().parent().find('.userName').text(name);
+                    confBtn.parent().parent().parent().find('.userSurname').text(surname);
+                    confBtn.parent().parent().parent().find('.userEmail').text(email);
+                    confBtn.parent().parent().find('.btnEditUser').attr("disabled", false);
+                    confBtn.parent().remove();
+                });            
             }
         }).fail(function () {
             alert('Something went wrong');

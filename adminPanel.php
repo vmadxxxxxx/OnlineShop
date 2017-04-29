@@ -56,11 +56,11 @@ if (isset($_SESSION['adminEmail'])) {
     
     foreach ($users as $key) {
         $idUser = $key->getId(); ?>
-            <tr>
-                <td id='userId'><?php echo $idUser ?></td>
-                <td id='userName'><?php echo $key->getName();?></td>
-                <td id='userSurname'><?php echo $key->getSurname(); ?></td>
-                <td id = 'userEmail'><?php echo $key->getEmail(); ?></td>
+            <tr class='trUsers'>
+                <td class='userId'><?php echo $idUser ?></td>
+                <td class='userName'><?php echo $key->getName();?></td>
+                <td class='userSurname'><?php echo $key->getSurname(); ?></td>
+                <td class = 'userEmail'><?php echo $key->getEmail(); ?></td>
                 <td><button type='submit' class='btnSendMsg btn btn-primary' name='btnSendMsg'>Send Message </button> 
                     <button type='submit' class='btnEditUser btn btn-info' name='btnEditUser'>Edit </button> 
                     <button type='submit' class='btnDelUser btn btn-danger' name='btnDelUser'>Delete </button>
