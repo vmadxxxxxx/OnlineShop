@@ -57,7 +57,7 @@ if (isset($_SESSION['adminEmail'])) {
     foreach ($users as $key) {
         $idUser = $key->getId(); ?>
             <tr>
-                <td><?php echo $idUser ?></td>
+                <td id='userId'><?php echo $idUser ?></td>
                 <td id='userName'><?php echo $key->getName();?></td>
                 <td id='userSurname'><?php echo $key->getSurname(); ?></td>
                 <td id = 'userEmail'><?php echo $key->getEmail(); ?></td>
