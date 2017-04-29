@@ -19,6 +19,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
 
     echo json_encode($result);
    
+} elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+    
+    parse_str(file_get_contents("php://input"), $put_vars);
+    $id = $put_vars['id'];
+    $name = $put_vars['name'];
+    $price = $put_vars['price'];
+    $description = $put_vars['description'];
+    $toUpdate = Item::loadById($id);
+    $toUpdate->setName($name);
+    $toUpdate->setPrice($price);
+    $toUpdate->setDescription($description);
+    $toUpdate->save();
+
+    echo json_encode($toUpdate);
 }
 
 

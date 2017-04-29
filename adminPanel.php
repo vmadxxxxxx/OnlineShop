@@ -63,7 +63,7 @@ if (isset($_SESSION['adminEmail'])) {
                 <td class = 'userEmail'><?php echo $key->getEmail(); ?></td>
                 <td><button type='submit' class='btnSendMsg btn btn-primary' name='btnSendMsg'>Send Message </button> 
                     <button type='submit' class='btnEditUser btn btn-info' name='btnEditUser'>Edit </button> 
-                    <button type='submit' class='btnDelUser btn btn-danger' name='btnDelUser'>Delete </button>
+                    <button type='submit' class='btnDelUser btn btn-danger' name='btnDelUser'>Delete </button></td>  
             </tr>
             
 <?php 
@@ -82,7 +82,8 @@ if (isset($_SESSION['adminEmail'])) {
                     <td><span class='table-col'>Name</span></td>
                     <td><span class='table-col'>Price</span></td>
                     <td><span class='table-col'>Description<span></td>
-                    <td><span class='table-col'>Action</span></td></tr>
+                    <td><span class='table-col'>Action</span></td>
+                </tr>
 
 <?php
     $items = Item::loadAll();
@@ -90,13 +91,13 @@ if (isset($_SESSION['adminEmail'])) {
     foreach ($items as $key) {
         $idItem = $key->getId();
 ?>
-                <tr>
-                    <td><?php echo $idItem; ?></td>
-                    <td><?php echo $key->getName(); ?></td>
-                    <td><?php echo $key->getPrice(); ?></td>
-                    <td><?php echo $key->getDescription(); ?></td>
-                    <td><button type='submit' class='btnEditItem btn btn-primary' name='btnEditItem'>Add Image </button>
-                        <button type='submit' class='btnAddImage btn btn-info' name='btnAddImage'>Edit </button>
+                <tr class='trItems'>
+                    <td class='itemId'><?php echo $idItem; ?></td>
+                    <td class='itemName'><?php echo $key->getName(); ?></td>
+                    <td class='itemPrice'><?php echo $key->getPrice(); ?></td>
+                    <td class='itemDescription'><?php echo $key->getDescription(); ?></td>
+                    <td><button type='submit' class='btnAddImage btn btn-primary' name='btnEditItem'>Add Image </button>
+                        <button type='submit' class='btnEditItem btn btn-info' name='btnAddImage'>Edit </button>
                         <button type='submit' class='btnDelItem btn btn-danger' name='btnDelItem'>Delete </button></td>
                 </tr>
 <?php
@@ -114,7 +115,8 @@ if (isset($_SESSION['adminEmail'])) {
                     <td><span class='table-col'>Id</span></td>
                     <td colspan='2'><span class='table-col'>Name</span></td>
                     <td colspan='2'><span class='table-col'>Email<span></td>
-                    <td><span class='table-col'>Action</span></td></tr>
+                    <td><span class='table-col'>Action</span></td>
+                </tr>
 <?php
         $admins = Admin::loadAll();
         
@@ -127,7 +129,8 @@ if (isset($_SESSION['adminEmail'])) {
                     <td colspan='2'><?php echo $key->getEmail() ?></td>
                     <td><button type='submit' class='btnAddAdmin btn btn-primary' name='btnAddAdmin'>Add Admin </button>
                         <button type='submit' class='btnEditAdmin btn btn-info' name='btnEditAdmin'>Edit </button>
-                        <button type='submit' class='btnDelAdmin btn btn-danger' name='btnDelAdmin'>Delete </button></td></tr>
+                        <button type='submit' class='btnDelAdmin btn btn-danger' name='btnDelAdmin'>Delete </button></td>
+                </tr>
 <?php
     }
 ?>
