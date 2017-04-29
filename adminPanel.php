@@ -38,10 +38,11 @@ if (isset($_SESSION['adminEmail'])) {
     }
 
     //creating table with all Users and buttons to delete and edit them
-    $users = User::loadAll();
+
     ?>
     <div class='panel panel-default table-responsive'>
-        <table class='table table-condensed table-hover'>
+        <div class='tableUsers'>
+        <table class='table table-condensed'>
             <thead>
                 <tr><span class='table-header'>Users</span></th></tr>
             </thead>
@@ -51,13 +52,15 @@ if (isset($_SESSION['adminEmail'])) {
                 <td><span class='table-col'>Action</span></td>
             </tr>
 <?php
+    $users = User::loadAll();
+    
     foreach ($users as $key) {
         $idUser = $key->getId(); ?>
             <tr>
                 <td><?php echo $idUser ?></td>
-                <td><?php echo $key->getName();?></td>
-                <td><?php echo $key->getSurname(); ?></td>
-                <td><?php echo $key->getEmail(); ?></td>
+                <td id='userName'><?php echo $key->getName();?></td>
+                <td id='userSurname'><?php echo $key->getSurname(); ?></td>
+                <td id = 'userEmail'><?php echo $key->getEmail(); ?></td>
                 <td><button type='submit' class='btnSendMsg btn btn-primary' name='btnSendMsg'>Send Message </button> 
                     <button type='submit' class='btnEditUser btn btn-info' name='btnEditUser'>Edit </button> 
                     <button type='submit' class='btnDelUser btn btn-danger' name='btnDelUser'>Delete </button>
@@ -66,12 +69,11 @@ if (isset($_SESSION['adminEmail'])) {
 <?php 
 
     } 
-        $items = Item::loadAll();
 ?>
             
-        </table>
+            </table></div>
                             <!-- table with all items -->  
-        <table class='table table-hover table-condensed'>
+        <table class='table table-condensed'>
             <thead>
                 <tr><span class='table-header'>Items</span></th></tr>
             </thead>
@@ -83,6 +85,8 @@ if (isset($_SESSION['adminEmail'])) {
                     <td><span class='table-col'>Action</span></td></tr>
 
 <?php
+    $items = Item::loadAll();
+    
     foreach ($items as $key) {
         $idItem = $key->getId();
 ?>
@@ -97,12 +101,12 @@ if (isset($_SESSION['adminEmail'])) {
                 </tr>
 <?php
     }   
-        $admins = Admin::loadAll();
+
 ?>
         </table>
                             <!-- table with all admins -->
                             
-        <table class='table table-hover table-condensed'>
+        <table class='table table-condensed'>
             <thead>
                 <tr colspan='6'><span class='table-header'>Admins</span></th></tr>
             </thead>
@@ -112,8 +116,10 @@ if (isset($_SESSION['adminEmail'])) {
                     <td colspan='2'><span class='table-col'>Email<span></td>
                     <td><span class='table-col'>Action</span></td></tr>
 <?php
-                            foreach ($admins as $key) {
-                                $idAdmin = $key->getId();
+        $admins = Admin::loadAll();
+        
+        foreach ($admins as $key) {
+            $idAdmin = $key->getId();
 ?>
                 <tr>
                     <td><?php echo $idAdmin?></td>
