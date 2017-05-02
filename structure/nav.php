@@ -22,7 +22,7 @@ if (isset($_SESSION['email'])) { ?>
                             <li><a href='./browseShop.php'>Browse Shop <span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></li>
                             <li><a href='./showMessages.php'>Messages <span class='glyphicon glyphicon-envelope' aria-hidden='true'></span></a></li>
                             <li><a href='#myOrders'>My orders</a></li>
-                            <li><a href='#cart'>Cart <span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
+                            <li><a href='./cart.php'>Cart <span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
                         </ul>
 
                         <ul class='nav navbar-nav navbar-right'>
@@ -58,7 +58,7 @@ if (isset($_SESSION['email'])) { ?>
                             <li><a href='./browseShop.php'>Browse Shop <span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></li>
                             <li><a href='./showMessages.php'>Messages <span class='glyphicon glyphicon-envelope' aria-hidden='true'></span></a></li>
                             <li><a href='#myOrders'>My orders</a></li>
-                            <li><a href='#cart'>Cart <span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
+                            <li><a href='./cart.php'>Cart <span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
                         </ul>
 
                         <ul class='nav navbar-nav navbar-right'>

@@ -1,6 +1,6 @@
 <?php
 
-define('TITLE', "Browse Shop;");
+define('TITLE', "Browse Shop");
 include('structure/header.php');
 
 if (isset($_SESSION['id']) || isset($_SESSION['adminEmail'])) {
@@ -9,18 +9,24 @@ if (isset($_SESSION['id']) || isset($_SESSION['adminEmail'])) {
     if(isset($_GET['action']) && $_GET['action']=="add"){ 
           
         $id = intval($_GET['id']); 
-          
+        $price = $_GET['price'];
+        
         if(isset($_SESSION['cart'][$id])){ 
               
             $_SESSION['cart'][$id]['quantity']++; 
               
-        }else{ 
-                  
-                $message="This product id is invalid!"; 
-                  
-            } 
+        } else {
+            $_SESSION['cart'][$id]=array( 
+                        'quantity' => 1, 
+                        'price' => $price
+                    ); 
+          }
               
-        } 
+    } else { 
+                  
+        $message="This product id is invalid!"; 
+                  
+           } 
           
      
 
@@ -59,7 +65,7 @@ if (isset($_SESSION['id']) || isset($_SESSION['adminEmail'])) {
         }
 ?>
             </td>
-                <td class="link"><a href="browseShop.php?action=add&id=<?php echo $key->getId(); ?>">Add to cart</a></td>
+                <td class="link"><a href="browseShop.php?action=add&id=<?php echo $key->getId(); ?>&price=<?php echo $key->getPrice(); ?>">Add to cart</a></td>
             </tr>
 <?php
     }
@@ -79,4 +85,4 @@ if (isset($_SESSION['id']) || isset($_SESSION['adminEmail'])) {
 <?php
 
 include('structure/footer.php');
-?>
+
