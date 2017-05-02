@@ -6,20 +6,46 @@ include('structure/header.php');
 if (isset($_SESSION['id']) || isset($_SESSION['adminEmail'])) {
     $items = Item::loadAll();
 
-    echo "<table class='table'><thead colspan='4'><tr><span class='table-header'>Items</span></th></tr></thead><tr><td><span class='table-col'>Id</span></td><td><span class='table-col'>Name</span></td><td><span class='table-col'>Price</span></td><td><span class='table-col'>Description<span></td><td class='img'><span class='table-col'>Image<span></td></tr>";
+?>
+    <table class='table'>
+        <thead colspan='4'>
+            <tr><span class='table-header'>Items</span></th></tr>
+        </thead>
+            <tr>
+                <td><span class='table-col'>Id</span></td>
+                <td><span class='table-col'>Name</span></td>
+                <td><span class='table-col'>Price</span></td>
+                <td><span class='table-col'>Description<span></td>
+                            <td class='img'><span class='table-col'>Image<span></td>
+            </tr>
+            
+<?php
     foreach ($items as $key) {
         $itemId = $key->getId();
         $pictures = Image::loadAllById($itemId);
 
-        echo "<tr><td>" . $key->getId() . "</td><td>" . $key->getName() . "</td><td>" . $key->getPrice() . "</td><td>" . $key->getDescription() . "</td>";
-        echo "<td>";
+?>          <tr>
+                <td><?php echo $key->getId(); ?></td>
+                <td><?php echo $key->getName(); ?></td>
+                <td><?php echo $key->getPrice() ?></td>
+                <td><?php echo $key->getDescription(); ?></td>
+                <td>
+<?php
         foreach ($pictures as $val) {
             $sciezka = $val->getSource();
-            echo "<a href='$sciezka'><img src='$sciezka' width='130' height='80'/></a>";
+            
+            ?>
+            <a href='<?php echo $sciezka; ?>'><img src='<?php echo $sciezka; ?>' width='130' height='80'/></a>
+            
+<?php
         }
     }
-    echo"</td></tr>";
-    echo "</table>";
+    ?>
+                </td>
+            </tr>
+    </table>
+
+<?php
 } else {
     echo "You have to log in first!";
     header("Refresh: 2 loginForm.php?");
