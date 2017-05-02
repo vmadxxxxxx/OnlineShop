@@ -10,6 +10,7 @@ if (isset($_SESSION['id']) || isset($_SESSION['adminEmail'])) {
           
         $id = intval($_GET['id']); 
         $price = $_GET['price'];
+        $name = $_GET['name'];
         
         if(isset($_SESSION['cart'][$id])){ 
               
@@ -18,7 +19,8 @@ if (isset($_SESSION['id']) || isset($_SESSION['adminEmail'])) {
         } else {
             $_SESSION['cart'][$id]=array( 
                         'quantity' => 1, 
-                        'price' => $price
+                        'price' => $price,
+                        'name' => $name
                     ); 
           }
               
@@ -65,7 +67,7 @@ if (isset($_SESSION['id']) || isset($_SESSION['adminEmail'])) {
         }
 ?>
             </td>
-                <td class="link"><a href="browseShop.php?action=add&id=<?php echo $key->getId(); ?>&price=<?php echo $key->getPrice(); ?>">Add to cart</a></td>
+                <td class="link"><a href="browseShop.php?action=add&id=<?php echo $key->getId(); ?>&price=<?php echo $key->getPrice(); ?>&name=<?php echo $key->getName(); ?>">Add to cart</a></td>
             </tr>
 <?php
     }
