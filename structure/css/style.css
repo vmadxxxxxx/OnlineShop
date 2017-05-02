@@ -15,6 +15,11 @@ span {
     color: red;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
 
 .label {
     color: black;
