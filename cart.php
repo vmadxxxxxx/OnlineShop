@@ -10,6 +10,12 @@ if (isset($_SESSION['cart'])) {
 
     $cartArray = $_SESSION['cart'];
     $total = 0;
+    
+    if (isset($_GET['id'])) {
+        $idRm = $_GET['id'];
+        unset($_SESSION['cart'][$idRm]);
+        header("Refresh: 1 cart.php?");
+    }
     ?>
 
     <h1>My cart</h1>
@@ -33,7 +39,7 @@ if (isset($_SESSION['cart'])) {
         <td><?php echo $value['name']."<br>"; ?></td>
         <td><?php echo $value['price']."<br>"; ?></td>
         <td><?php echo $value['quantity']."<br>"; ?></td>
-        <td><form action="" method="POST"><input type="submit" value="Remove"></form></td>
+        <td><a href="./cart.php?id=<?php echo $id?>">Remove</a></td>
         </tr>
       <?php  
     }
