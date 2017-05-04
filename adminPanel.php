@@ -123,10 +123,10 @@ if (isset($_SESSION['adminEmail'])) {
         foreach ($admins as $key) {
             $idAdmin = $key->getId();
 ?>
-                <tr>
-                    <td><?php echo $idAdmin?></td>
-                    <td colspan='2'><?php echo $key->getName() ?></td>
-                    <td colspan='2'><?php echo $key->getEmail() ?></td>
+                <tr class="trAdmins">
+                    <td class="adminId"><?php echo $idAdmin?></td>
+                    <td class="adminName" colspan='2'><?php echo $key->getName() ?></td>
+                    <td class="adminEmail" colspan='2'><?php echo $key->getEmail() ?></td>
                     <td><button type='submit' class='btnAddAdmin btn btn-primary' name='btnAddAdmin'>Add Admin </button>
                         <button type='submit' class='btnEditAdmin btn btn-info' name='btnEditAdmin'>Edit </button>
                         <button type='submit' class='btnDelAdmin btn btn-danger' name='btnDelAdmin'>Delete </button></td>

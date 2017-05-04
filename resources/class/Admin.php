@@ -70,7 +70,7 @@ class Admin extends activeRecord implements JsonSerializable {
                 ]);
 
                 if ($result == true) {
-                    return true;
+                    return [json_encode($result)];
                 }
             }
         } else {
