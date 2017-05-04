@@ -169,7 +169,7 @@ class Message extends activeRecord implements JsonSerializable {
 
 }
 
-// sql query for creating table for Items
+// sql query for creating table for Messages
 
   /*
    CREATE TABLE Message (

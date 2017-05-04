@@ -3,6 +3,11 @@
 
 class Order extends activeRecord implements JsonSerializable
 {
+    private $customer;
+    private $summary;
+    private $charge;
+    private $date;
+
     public function getId()
         {
 
@@ -28,3 +33,18 @@ class Order extends activeRecord implements JsonSerializable
 
         }
 }
+
+
+// sql query for creating table for Orders
+
+    /*
+     CREATE TABLE `Order` (
+             id int AUTO_INCREMENT,
+             customer int NOT NULL,
+             summary varchar(255),
+             charge float NOT NULL,
+             date date,
+             PRIMARY KEY(id),
+             FOREIGN KEY(customer) REFERENCES User(id)
+             );
+             */
