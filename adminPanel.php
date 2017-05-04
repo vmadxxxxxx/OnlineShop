@@ -127,8 +127,7 @@ if (isset($_SESSION['adminEmail'])) {
                     <td class="adminId"><?php echo $idAdmin?></td>
                     <td class="adminName" colspan='2'><?php echo $key->getName() ?></td>
                     <td class="adminEmail" colspan='2'><?php echo $key->getEmail() ?></td>
-                    <td><button type='submit' class='btnAddAdmin btn btn-primary' name='btnAddAdmin'>Add Admin </button>
-                        <button type='submit' class='btnEditAdmin btn btn-info' name='btnEditAdmin'>Edit </button>
+                    <td><button type='submit' class='btnEditAdmin btn btn-info' name='btnEditAdmin'>Edit </button>
                         <button type='submit' class='btnDelAdmin btn btn-danger' name='btnDelAdmin'>Delete </button></td>
                 </tr>
 <?php
