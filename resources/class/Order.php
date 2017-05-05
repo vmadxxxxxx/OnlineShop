@@ -71,6 +71,7 @@ class Order extends activeRecord implements JsonSerializable
                         return true;
                     } else {
                         echo self::$db->conn->error;
+                        }
                     } else {
                     $sql = "UPDATE Order SET customer = :customer, summary = :summary, charge = :charge, date = :date WHERE id = $this->id";
 
@@ -91,8 +92,6 @@ class Order extends activeRecord implements JsonSerializable
             }
             return false;
         }
-
-        }
     public function delete()
         {
             $id = $this->getId();
@@ -110,7 +109,7 @@ class Order extends activeRecord implements JsonSerializable
     static public function loadAll()
         {
             self::connect();
-            $sql = "SELECT * FROM Order";
+            $sql = "SELECT * FROM `Order`";
             $returnTable = [];
             if ($result = self::$db->conn->query($sql)) {
                 foreach ($result as $row) {
