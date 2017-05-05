@@ -55,7 +55,7 @@ class Admin extends activeRecord implements JsonSerializable {
 
                 if ($result == true) {
                     $this->id = self::$db->conn->lastInsertId();
-                    return true;
+                    return [json_encode($result)];
                 } else {
                     echo self::$db->conn->error;
                 }
@@ -70,7 +70,7 @@ class Admin extends activeRecord implements JsonSerializable {
                 ]);
 
                 if ($result == true) {
-                    return true;
+                    return [json_encode($result)];
                 }
             }
         } else {

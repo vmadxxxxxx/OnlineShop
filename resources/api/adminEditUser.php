@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
 
     echo json_encode($resultUser);
 } elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-    
+
     parse_str(file_get_contents("php://input"), $put_vars);
     $id = $put_vars['id'];
     $name = $put_vars['name'];

@@ -38,7 +38,7 @@ $(function () {
             type: 'PUT'
         }).done(function (success) {
             if (success) {
-                
+
                 confBtn.parent().parent().parent().fadeOut(400, function () {
                     confBtn.parent().parent().parent().fadeIn().delay(1000);
                     confBtn.parent().parent().parent().find('.userName').text(name);
@@ -53,7 +53,7 @@ $(function () {
         });
 
     });
-    
+
     //event for clicking delete user button
     var delBtnsUser = $('.btnDelUser');
 
@@ -77,10 +77,10 @@ $(function () {
         });
     });
 
-        //OPERTATIONS ON ITEM TABLE
-        //
-        //event for edit user button - creating edit form
-        
+    //OPERTATIONS ON ITEM TABLE
+    //
+    //event for edit user button - creating edit form
+
     var editBtnsItem = $('.btnEditItem');
 
     editBtnsItem.on('click', function () {
@@ -89,7 +89,7 @@ $(function () {
         var description = $(this).parent().parent().find('.itemDescription').text();
         var form = (' <form><label>Name<input name="newName" type="text" value=' + name + '></label>\n\
                             <label>Price<input type="text" name="newPrice" value=' + price + '></label>\n\
-                            <label>Description<input type="text" name="newDescription" value='+description+'></label>\n\
+                            <label>Description<input type="text" name="newDescription" value=' + description + '></label>\n\
                             <button class="btn btn-info" id="itemEditConf" type="submit">Confirm</button></form>');
         $(this).parent().append(form); //added form
         $(this).attr("disabled", true); //blocking edit button 
@@ -113,7 +113,7 @@ $(function () {
             type: 'PUT'
         }).done(function (success) {
             if (success) {
-                
+
                 confBtn.parent().parent().parent().fadeOut(400, function () {
                     confBtn.parent().parent().parent().fadeIn().delay(1000);
                     confBtn.parent().parent().parent().find('.itemName').text(name);
@@ -128,7 +128,7 @@ $(function () {
         });
 
     });
-    
+
     //event for clicking delete item button
     var delBtnsItem = $('.btnDelItem');
 
@@ -156,8 +156,54 @@ $(function () {
 
     //OPERATIONS ON ADMIN TABLE
     //
-    //event for clicking delete admin button
+    //event for edit admin button - creating edit form
+
+    var trAdm = $('.trAdmins');
+    var editBtnsAdmin = $('.btnEditAdmin');
+
+    editBtnsAdmin.on('click', function () {
+        var name = $(this).parent().parent().find('.adminName').text();
+        var email = $(this).parent().parent().find('.adminEmail').text();
+        var form = (' <form><label>Name<input name="newAdminName" type="text" value=' + name + '></label>\n\
+                            <label>Email<input type="text" name="newAdminEmail" value=' + email + '></label>\n\
+                            <button class="btn btn-info" id="adminEditConf" type="submit">Confirm</button></form>');
+        $(this).parent().append(form); //added form
+        $(this).attr("disabled", true); //blocking edit button 
+    });
+
+    //event for clicking confirm edit Admin
     
+    trAdm.on('click', 'button#adminEditConf', function (e) {
+        e.preventDefault();
+        var id = $(this).parent().parent().parent().find('.adminId').text();
+        var name = $(this).parent().parent().parent().find('input[name=newAdminName]').val();
+        var email = $(this).parent().find('input[name=newAdminEmail]').val();
+        confBtn = $(this);
+
+        $.ajax({
+            url: 'resources/api/adminEditAdmin.php',
+            dataType: 'json',
+            data: {id: id, name: name, email: email},
+            type: 'PUT'
+        }).done(function (success) {
+            if (success) {
+
+                confBtn.parent().parent().parent().fadeOut(400, function () {
+                    confBtn.parent().parent().parent().fadeIn().delay(1000);
+                    confBtn.parent().parent().parent().find('.adminName').text(name);
+                    confBtn.parent().parent().parent().find('.adminEmail').text(email);
+                    confBtn.parent().parent().find('.btnEditAdmin').attr("disabled", false);
+                    confBtn.parent().remove();
+                });
+            }
+        }).fail(function () {
+            alert('Something went wrong');
+        });
+
+    });
+
+    //event for clicking delete admin button
+
     var delBtnsAdmin = $('.btnDelAdmin');
 
     delBtnsAdmin.click(function () {
