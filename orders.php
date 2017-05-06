@@ -2,10 +2,22 @@
 
 define('TITLE', "My orders");
 include('structure/header.php');
-echo "<br> Place for displaying accepted orders <br>";
 if (isset($_SESSION['id']) || isset($_SESSION['adminEmail'])) {
 $order = Order::loadAll();
+?>
 
+<table class='table'>
+    <thead colspan='6'>
+    <tr><span class='table-header' style="color: red">Orders history</span></th></tr>
+    </thead>
+    <tr>
+        <td><span class='table-col'>Id</span></td>
+        <td><span class='table-col'>Customer</span></td>
+        <td><span class='table-col'>Summary</span></td>
+        <td><span class='table-col'>Charge<span></td>
+        <td><span class='table-col'>Date<span></td>
+    </tr>
+<?php
     foreach ($order as $key) {
         $OrderId = $key->getId();
 
