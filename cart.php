@@ -8,7 +8,7 @@ include('structure/header.php');
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_SESSION['cart'])){
-        
+
         $orderArray = $_SESSION['cart'];
         $customer = $_SESSION['id'];
         $charge = 0;

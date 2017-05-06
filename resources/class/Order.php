@@ -141,6 +141,7 @@ class Order extends activeRecord implements JsonSerializable
             }
             return null;
         }
+
     public function jsonSerialize()
         {
             return [
@@ -151,6 +152,23 @@ class Order extends activeRecord implements JsonSerializable
                 'date' => $this->date
             ];
         }
+    public function loadAllOrdersByUserId($userId)
+    {
+        self::connect();
+        $sql = "SELECT * FROM Order WHERE id=$userId";
+        $result = self::$db->conn->query($sql);
+        if ($result && $result->rowCount() == 1) {
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+            $loadedOrder = new Order();
+            $loadedOrder->id = $row['id'];
+            $loadedOrder->customer = $row['customer'];
+            $loadedOrder->summary = $row['summary'];
+            $loadedOrder->charge = $row['charge'];
+            $loadedOrder->date = $row['date'];
+            return $loadedOrder;
+        }
+        return null;
+    }
 }
 
 
