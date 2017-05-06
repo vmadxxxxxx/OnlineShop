@@ -27,9 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $order->setDate($date);
         $order->save();
     }
-}
+    ?>
 
-if (isset($_SESSION['cart'])) {
+    <h1> Thank you for choosing our shop</h1>
+    <div> Your order has been delivered to execution. You can see Your order details on <a href="orders.php">my orders</a> page .</div>
+    <?php
+}elseif(isset($_SESSION['cart'])) {
 
     $cartArray = $_SESSION['cart'];
     $total = 0;
