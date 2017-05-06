@@ -12,11 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $orderArray = $_SESSION['cart'];
         $customer = 4;
         $charge = 0;
-        $summary = "podsumowanie";
+        $summary = "Ordered products: ";
         $date = date("Y-m-d");
 
         foreach ($orderArray as $id => $value) {
             $charge += $value['quantity'] * $value['price'];
+            $summary .= $value['name']." - ".$value['quantity']." pcs, ";
         }
 
         $order = new Order();
