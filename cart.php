@@ -1,10 +1,32 @@
 
 
 <?php
-
 define('TITLE', "Cart");
 include('structure/header.php');
+?>
 
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_SESSION['cart'])){
+
+        $orderArray = $_SESSION['cart'];
+        $customer = 4;
+        $charge = 0;
+        $summary = "podsumowanie";
+        $date = date("Y-m-d");
+
+        foreach ($orderArray as $id => $value) {
+            $charge += $value['quantity'] * $value['price'];
+        }
+
+        $order = new Order();
+        $order->setCustomer($customer);
+        $order->setSummary($summary);
+        $order->setCharge($charge);
+        $order->setDate($date);
+        $order->save();
+    }
+}
 
 if (isset($_SESSION['cart'])) {
 
@@ -51,6 +73,10 @@ if (isset($_SESSION['cart'])) {
         <h3>Total price</h3>
         <?php echo $total; ?>
     </div>
+    <br>
+    <form action="" method="post">
+        <input id="orderBtn" type="submit" name="button" value="Order Now">
+    </form>
 <?php
 } else {
     echo "Cart is empty!";

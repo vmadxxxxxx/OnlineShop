@@ -66,3 +66,9 @@ a {
    
     padding-bottom: 7px;
 }
+
+#orderBtn {
+    width: 20em;  height: 2em;
+    background-color: #3e8f3e;
+    border: solid black;
+}

@@ -57,7 +57,7 @@ class Order extends activeRecord implements JsonSerializable
         {
             if (self::$db->conn != null) {
                 if ($this->id == -1) {
-                    $sql = "INSERT INTO Order (customer, summary, charge, date) values (:customer, :summary, :charge, :date)";
+                    $sql = "INSERT INTO `Order` (customer, summary, charge, date) values (:customer, :summary, :charge, :date)";
                     $stmt = self::$db->conn->prepare($sql);  //MySQL inejction preventing during registering new user
                     $result = $stmt->execute([
                         'customer' => $this->customer,
