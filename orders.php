@@ -3,7 +3,8 @@
 define('TITLE', "My orders");
 include('structure/header.php');
 if (isset($_SESSION['id']) || isset($_SESSION['adminEmail'])) {
-$order = Order::loadAll();
+    $userId = $_SESSION['id'];
+    $order = Order::loadAllOrdersByUserId($userId);
 ?>
 
 <table class='table'>
